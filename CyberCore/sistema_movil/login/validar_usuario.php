@@ -8,8 +8,8 @@ include ('../../app/config/config.php');
 $email = $_POST['email'];
 $pass = $_POST['password'];
 
-//$email ='hilariweb@gmail.com';
-//$pass = '12345678';
+//$email ='benj.loyola@duocuc.cl';
+//$pass = '123';
 $email_tabla = "";
 $password_tabla="";
 
@@ -25,7 +25,7 @@ if(  (($email)==($email_tabla))  && (($pass)==($password_tabla))  ){
     echo "success";
     session_start();
     $_SESSION['u_usuario'] = $email;
-    header("Location: ".$URL."/sistema_movil/app/principal.php");
+    header("Location: ".$URL."/sistema_movil/app/pedidos.php");
 }else{
     echo "error";
 }

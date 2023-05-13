@@ -170,7 +170,7 @@ if(isset($_SESSION['u_usuario'])) {
                                                                                                     ?>
                                                                                                     <tr>
                                                                                                         <td><?php echo $nombre_cliente_p;?></td>
-                                                                                                        <td><?php echo $ci_cliente_p;?></td>
+                                                                                                        <td><?php echo $rut_cliente_p;?></td>
                                                                                                         <td>
                                                                                                             <?php echo $celular_cliente_p;?>
                                                                                                             <br>

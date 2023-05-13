@@ -43,7 +43,8 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                <?php
-               if($cargo_s == "ADMINISTRADOR"){ ?>
+               if($cargo_s == "ADMINISTRADOR")
+               { ?>
                    <li class="nav-item has-treeview">
                        <a href="<?php echo $URL;?>/web/usuarios/" class="nav-link active">
                            <i class="nav-icon fas fa-users"></i>
@@ -132,8 +133,6 @@
                            </p>
                        </a>
                    </li>
-
-
                   <!-- <li class="nav-header">REPORTES</li>
 
                    <li class="nav-item">
@@ -145,6 +144,22 @@
                 <?php
                }
                ?>
+               <?php
+                if($cargo_s == "REPARTIDOR"){
+                    ?>
+                    
+                   <li class="nav-item">
+                       <a href="<?php echo $URL;?>/sistema_movil/login" class="nav-link active">
+                           <i class="nav-icon fas fa-store"></i>
+                           <p>
+                               Pedidos
+                           </p>
+                       </a>
+                   </li>
+
+                <?php    
+                }
+                ?>
 
                 <li class="nav-header">Sesión</li>
 
