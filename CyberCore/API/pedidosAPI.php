@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 if ($_SERVER['REQUEST_METHOD'] == 'DELETE')
 {
 	$id = $_GET['id'];
-  $statement = $dbConn->prepare("DELETE FROM posts where id=:id");
+  $statement = $dbConn->prepare("DELETE FROM tb_pedidos where id_pedido=:id");
   $statement->bindValue(':id', $id);
   $statement->execute();
 	header("HTTP/1.1 200 OK");

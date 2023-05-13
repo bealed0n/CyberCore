@@ -94,26 +94,6 @@
                        </ul>
                    </li>
 
-
-                   <li class="nav-item has-treeview">
-                       <a href="<?php echo $URL;?>/web/clientes/" class="nav-link active">
-                           <i class="nav-icon fas fa-user-tag"></i>
-                           <p>
-                               Clientes
-                               <i class="right fas fa-angle-left"></i>
-                           </p>
-                       </a>
-                       <ul class="nav nav-treeview">
-                           <li class="nav-item">
-                               <a href="<?php echo $URL;?>/web/clientes/" class="nav-link">
-                                   <i class="nav-icon fas fa-motorcycle"></i>
-                                   <p>Listado de clientes</p>
-                               </a>
-                           </li>
-                       </ul>
-                   </li>
-
-
                    <li class="nav-item">
                        <a href="<?php echo $URL;?>/web/delivery" class="nav-link active">
                            <i class="nav-icon fas fa-map-marker-alt"></i>
@@ -122,9 +102,6 @@
                            </p>
                        </a>
                    </li>
-
-
-
                    <li class="nav-item">
                        <a href="<?php echo $URL;?>/web/pedidos" class="nav-link active">
                            <i class="nav-icon fas fa-store"></i>
@@ -152,7 +129,7 @@
                        <a href="<?php echo $URL;?>/sistema_movil/login" class="nav-link active">
                            <i class="nav-icon fas fa-store"></i>
                            <p>
-                               Pedidos
+                               Mis pedidos
                            </p>
                        </a>
                    </li>
