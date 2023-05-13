@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
     if (isset($_GET['id']))
     {
       //Mostrar un post
-      $sql = $dbConn->prepare("SELECT * FROM tb_usuarios where id=:id");
+      $sql = $dbConn->prepare("SELECT * FROM tb_carrito where id=:id");
       $sql->bindValue(':id', $_GET['id']);
       $sql->execute();
       header("HTTP/1.1 200 OK");
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
 	  }
     else {
       //Mostrar lista de post
-      $sql = $dbConn->prepare("SELECT * FROM tb_usuarios");
+      $sql = $dbConn->prepare("SELECT * FROM tb_carrito");
       $sql->execute();
       $sql->setFetchMode(PDO::FETCH_ASSOC);
       header("HTTP/1.1 200 OK");
@@ -35,10 +35,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
     $input = $_POST;
-    $sql = "INSERT INTO tb_usuarios
-          (nombres, ap_paterno, ap_materno, rut, fecha_nacimiento, sexo, celular, email, password, cargo, estado)
+    $sql = "INSERT INTO tb_carrito
+          (producto, detalle, cantidad, precio_unitario, precio_total, estado)
           VALUES
-          (:nombres, :ap_paterno, :ap_materno, :rut, :fecha_nacimiento, :sexo, :celular, :email, :password, :cargo, :estado)";
+          (:producto, :detalle, :cantidad, :precio_unitario, :precio_total, :estado)";
     $statement = $dbConn->prepare($sql);
     bindAllValues($statement, $input);
     $statement->execute();
@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 if ($_SERVER['REQUEST_METHOD'] == 'DELETE')
 {
 	$id = $_GET['id'];
-  $statement = $dbConn->prepare("DELETE FROM tb_usuarios where id=:id");
+  $statement = $dbConn->prepare("DELETE FROM tb_carrito where id=:id");
   $statement->bindValue(':id', $id);
   $statement->execute();
 	header("HTTP/1.1 200 OK");
