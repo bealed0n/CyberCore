@@ -70,24 +70,24 @@
 
 
                    <li class="nav-item has-treeview">
-                       <a href="<?php echo $URL;?>/web/motoqueros/" class="nav-link active">
+                       <a href="<?php echo $URL;?>/web/repartidor/" class="nav-link active">
                            <i class="nav-icon fas fa-motorcycle"></i>
                            <p>
-                               Motoqueros
+                               Repartidores
                                <i class="right fas fa-angle-left"></i>
                            </p>
                        </a>
                        <ul class="nav nav-treeview">
                            <li class="nav-item">
-                               <a href="<?php echo $URL;?>/web/motoqueros/" class="nav-link">
+                               <a href="<?php echo $URL;?>/web/repartidor/" class="nav-link">
                                    <i class="nav-icon fas fa-motorcycle"></i>
-                                   <p>Listado de motoqueros</p>
+                                   <p>Listado de repartidores</p>
                                </a>
                            </li>
                            <li class="nav-item">
-                               <a href="<?php echo $URL;?>/web/motoqueros/create" class="nav-link">
+                               <a href="<?php echo $URL;?>/web/repartidor/create.php" class="nav-link">
                                    <i class="nav-icon fas fa-motorcycle"></i>
-                                   <p>Creación de motoqueros</p>
+                                   <p>Creación de repartidores</p>
                                </a>
                            </li>
                        </ul>

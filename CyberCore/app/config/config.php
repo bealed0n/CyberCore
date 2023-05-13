@@ -1,16 +1,12 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: DELL-SYSTEM
- * Date: 14/07/2020
- * Time: 9:29
  */
 define('SERVIDOR','localhost');
 define('USUARIO','root');
 define('PASSWOD','');
-define('BD','delivery');
+define('BD','cybercore');
 
-$URL = 'http://localhost/delivery';
+$URL = 'http://localhost/cybercore/cybercore';
 
 
 $servidor = "mysql:dbname=".BD.";host=".SERVIDOR;
