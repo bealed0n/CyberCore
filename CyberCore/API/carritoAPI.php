@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'PUT')
     $fields = getParams($input);
 
     $sql = "
-          UPDATE tb_usuarios
+          UPDATE tb_carrito
           SET $fields
           WHERE id='$postId'
            ";
