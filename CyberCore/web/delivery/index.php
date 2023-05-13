@@ -46,7 +46,7 @@ if(isset($_SESSION['u_usuario'])) {
                         <br><br><br>
                         <div class="card card-primary card-outline">
                             <div class="card-header">
-                                <h3 class="card-title"><span class="fa fa-motorcycle"></span> Delivery Moto Camba</h3>
+                                <h3 class="card-title"><span class="fa fa-motorcycle"></span> Delivery MUSIC PRO</h3>
                             </div> <!-- /.card-body -->
                             <div class="card-body">
                                 <div class="row">
@@ -84,7 +84,7 @@ if(isset($_SESSION['u_usuario'])) {
                         <br><br><br>
                         <div class="card card-primary card-outline">
                             <div class="card-header">
-                                <h3 class="card-title"><span class="fa fa-motorcycle"></span> Delivery Cybercore</h3>
+                                <h3 class="card-title"><span class="fa fa-motorcycle"></span> Delivery MUSIC PRO</h3>
                             </div> <!-- /.card-body -->
                             <div class="card-body">
                                 <div class="row">
@@ -128,7 +128,7 @@ if(isset($_SESSION['u_usuario'])) {
                     $query2->execute();
                     $marks = $query2->fetchAll(PDO::FETCH_ASSOC);
                     foreach ($marks as $mark) {
-                    $email = $mark['id_motoquero'];
+                    $email = $mark['id_repartidor'];
                     $latitud = $mark['latitud'];
                     $longitud = $mark['longitud'];
                     $estado = $mark['estado_delivery'];
@@ -140,7 +140,7 @@ if(isset($_SESSION['u_usuario'])) {
 
                     var image = {
                         url:
-                            "http://localhost/delivery/public/imagenes/localizacionmotoquero.png",
+                            "http://localhost/delivery/public/imagenes/localizacionrepartidor.png",
                         size: new google.maps.Size(35, 60),origin: new google.maps.Point(0, 0), anchor: new google.maps.Point(0, 32)
                     };
                     var marker = new google.maps.Marker({
@@ -251,7 +251,7 @@ if(isset($_SESSION['u_usuario'])) {
 
                         var image = {
                             url:
-                                "http://localhost/delivery/public/imagenes/localizacionmotoquero.png",
+                                "http://localhost/delivery/public/imagenes/localizacionrepartidor.png",
                             size: new google.maps.Size(35, 60),origin: new google.maps.Point(0, 0), anchor: new google.maps.Point(0, 32)
                         };
 
