@@ -62,7 +62,7 @@
                            <li class="nav-item">
                                <a href="<?php echo $URL;?>/web/usuarios/create.php" class="nav-link">
                                    <i class="far fa-user nav-icon"></i>
-                                   <p>Creación de usuarios</p>
+                                   <p>Crear administradores</p>
                                </a>
                            </li>
                        </ul>
