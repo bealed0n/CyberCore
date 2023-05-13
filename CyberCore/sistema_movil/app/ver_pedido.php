@@ -136,16 +136,16 @@ foreach ($pedidos as $pedido) {
         <br>
         <span>
             <i class="fa fa-money-bill" style="color: #00558F"></i>
-            <b style="color: #00558F">Costo del Pedido: <span style="font-size: 25px">Bs. <?php echo $costo_pedido;?></span></b>
+            <b style="color: #00558F">Costo del Pedido: <span style="font-size: 25px">$<?php echo $costo_pedido;?></span></b>
         </span>
         <br>
         <span>
             <i class="fa fa-motorcycle" style="color: #00558F"></i>
-            <b style="color: #00558F">Costo del Delivery: <span style="font-size: 25px">Bs. <?php echo $costo_delivery;?></span></b>
+            <b style="color: #00558F">Costo del Delivery: <span style="font-size: 25px">$<?php echo $costo_delivery;?></span></b>
         </span>
         <hr>
         <span>
-            <b style="color: #00558F">Costo Total: <span style="font-size: 25px">Bs. <?php echo $costo_total = $costo_pedido + $costo_delivery;?></span></b>
+            <b style="color: #00558F">Costo Total: <span style="font-size: 25px">$<?php echo $costo_total = $costo_pedido + $costo_delivery;?></span></b>
         </span>
         <br><br>
         <?php

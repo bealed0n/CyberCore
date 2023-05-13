@@ -116,7 +116,7 @@ if(isset($_SESSION['u_usuario'])) {
                            </span>
 
                             <span class="info-box-text text-right">
-                           <a href="ver_pedido.php?id_p=<?php echo $id_pedidos;?>&&email_m=<?php echo $email;?>" class="btn btn-info btn-xs">
+                           <a href="ver_pedido.php?id_p=<?php echo $id_pedidos;?>&&email_r=<?php echo $email;?>" class="btn btn-info btn-xs">
                                <i class="fas fa-shopping-bag"></i> Ver Pedido
                            </a>
                            </span>
@@ -182,7 +182,7 @@ if(isset($_SESSION['u_usuario'])) {
                            </span>
 
                         <span class="info-box-text text-right">
-                           <a href="ver_pedido_finalizado.php?id_p=<?php echo $id_pedidos;?>&&email_m=<?php echo $email;?>" class="btn btn-info btn-xs">
+                           <a href="ver_pedido_finalizado.php?id_p=<?php echo $id_pedidos;?>&&email_r=<?php echo $email;?>" class="btn btn-info btn-xs">
                                <i class="fas fa-shopping-bag"></i> Ver Pedido Finalizado
                            </a>
                            </span>

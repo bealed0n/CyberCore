@@ -9,7 +9,7 @@ $direccion = $_POST['direccion'];
 $referencia = $_POST['referencia'];
 $email = $_POST['email'];
 
-date_default_timezone_set("America/Caracas");
+date_default_timezone_set("America/Santiago");
 $fechaHora =date("Y-m-d h:i:s");
 $estado = "1";
 

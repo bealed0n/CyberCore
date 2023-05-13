@@ -6,13 +6,13 @@ include('../../app/config/config.php');
 
 
 $id_pedido = $_GET['id_p'];
-$id_repartidor = $_GET['id_m'];
+$id_repartidor = $_GET['id_r'];
 
 $estado_pedido = 'ASIGNADO';
 
 $email_repartidor = '';
 $query_repartidor = $pdo->prepare("SELECT * FROM tb_usuarios WHERE cargo = 'REPARTIDOR' AND id='$id_repartidor' AND estado ='1' ");
-$query_repartidor>execute();
+$query_repartidor->execute();
 $repartidores = $query_repartidor->fetchAll(PDO::FETCH_ASSOC);
 foreach ($repartidores as $repartidor) {
     $id_rep = $repartidor['id'];

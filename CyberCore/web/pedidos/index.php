@@ -74,7 +74,7 @@ if(isset($_SESSION['u_usuario'])) {
                                                 <th>Celular</th>
                                                 <th>Dirección</th>
                                                 <th>Pedido Completo</th>
-                                                <th>Asignación de Motoquero</th>
+                                                <th>Asignación de repartidor</th>
                                                 <th>Estado del Pedido</th>
                                             </tr>
                                             </thead>
@@ -98,7 +98,7 @@ if(isset($_SESSION['u_usuario'])) {
                                                 <tr>
                                                     <td><?php echo $contador_de_pedidos;?></td>
                                                     <td><?php echo $cliente;?></td>
-                                                    <td><?php echo $ci_cliente;?></td>
+                                                    <td><?php echo $rut_cliente;?></td>
                                                     <td>
                                                         <a href="<?php echo "https://api.whatsapp.com/send?phone=56".$celular_cliente  ;?>"
                                                            class="btn btn-success btn-xs" target="_blank">
@@ -328,7 +328,7 @@ if(isset($_SESSION['u_usuario'])) {
                                                             <center>
                                                                 <form action="controller_asignar_repartidor.php" method="get">
                                                                     <input type="text" id=""  value="<?php echo $id_pedidos;?>" name="id_p" hidden>
-                                                                    <input type="text" id="txt_id_rep<?php echo $id_pedidos;?>" name="id_m" hidden>
+                                                                    <input type="text" id="txt_id_rep<?php echo $id_pedidos;?>" name="id_r" hidden>
                                                                     <button class="btn btn-info btn-sm" style="margin-top: 5px">
                                                                         <i class="fa fa-motorcycle"></i> Asignar Pedido
                                                                     </button>
@@ -384,7 +384,7 @@ if(isset($_SESSION['u_usuario'])) {
                                                                                 <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/>
                                                                                 <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>
                                                                             </svg>
-                                                                            Cambiar a otro Motoquero
+                                                                            Cambiar a otro Repartidor
                                                                         </a>
                                                                     </center>
                                                                     <?php
