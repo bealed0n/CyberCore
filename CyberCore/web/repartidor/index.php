@@ -39,7 +39,7 @@ if(isset($_SESSION['u_usuario'])) {
                             <div class="card-header">
                                 <h3 class="card-title"><span class="fa fa-users"></span> Listado de repartidores</h3>
                                 <div style="float:right;">
-                                    <a href="create" class="btn btn-info pull-right"> <span class="fa fa-plus"></span> Nuevo repartidor</a>
+                                    <a href="create.php" class="btn btn-info pull-right"> <span class="fa fa-plus"></span> Nuevo repartidor</a>
                                 </div>
                             </div> <!-- /.card-body -->
                             <div class="card-body">
@@ -66,7 +66,7 @@ if(isset($_SESSION['u_usuario'])) {
                                                 $ap_materno = $usuario2['ap_materno'];
                                                 $nombres = $usuario2['nombres'];
                                                 $rut = $usuario2['rut'];
-                                                $genero = $usuario2['genero'];
+                                                $sexo = $usuario2['sexo'];
                                                 $celular = $usuario2['celular'];
                                                 $email = $usuario2['email'];
                                                 $fecha_nacimiento = $usuario2['fecha_nacimiento'];
@@ -79,6 +79,7 @@ if(isset($_SESSION['u_usuario'])) {
                                                     <td><?php echo $rut;?></td>
                                                     <td><?php echo $cargo;?></td>
                                                     <td><?php echo $fecha_nacimiento;?></td>
+                                                    <td><?php echo $sexo;?></td>
                                                     <td>
                                                         <a href="<?php echo "https://api.whatsapp.com/send?phone=56".$celular  ;?>"
                                                            class="btn btn-success btn-xs" target="_blank">
@@ -86,12 +87,12 @@ if(isset($_SESSION['u_usuario'])) {
                                                             <?php echo $celular;?>
                                                         </a>
                                                     </td>
-                                                    <td><?php echo $celular;?></td>
+                                                    
                                                     <td><?php echo $email;?></td>
                                                     <td>
                                                         <a href="update?id=<?php echo $id_usuario;?>" class="btn btn-success btn-xs">
                                                             <span class="fa fa-pen"></span> Editar</a>
-                                                        <a href="delete?id=<?php echo $id_usuario;?>" class="btn btn-danger btn-xs">
+                                                        <a href="delete.php?id=<?php echo $id_usuario;?>" class="btn btn-danger btn-xs">
                                                             <span class="fa fa-trash"></span> Borrar</a>
                                                     </td>
                                                 </tr>

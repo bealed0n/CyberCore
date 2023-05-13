@@ -76,8 +76,8 @@ if(isset($_SESSION['u_usuario'])) {
                                             <div class="form-group">
                                                 <label for="">Sexo</label>
                                                 <select name="sexo" id="" CLASS="form-control">
-                                                    <option value="HOMBRE">HOMBRE</option>
-                                                    <option value="MUJER">MUJER</option>
+                                                    <option value="MASCULINO">MASCULINO</option>
+                                                    <option value="FEMENINO">FEMENINO</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">

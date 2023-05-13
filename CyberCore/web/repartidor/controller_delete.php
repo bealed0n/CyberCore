@@ -1,9 +1,5 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: DELL-SYSTEM
- * Date: 18/07/2020
- * Time: 10:20
  */
 include('../../app/config/config.php');
 

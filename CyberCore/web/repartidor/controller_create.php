@@ -1,9 +1,5 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: DELL-SYSTEM
- * Date: 16/07/2020
- * Time: 12:07
  */
 
 include('../../app/config/config.php');
@@ -13,7 +9,7 @@ $ap_paterno = $_POST['ap_paterno'];
 $ap_materno = $_POST['ap_materno'];
 $rut = $_POST['rut'];
 $fecha_nacimiento = $_POST['fecha_nacimiento'];
-$genero = $_POST['genero'];
+$sexo = $_POST['sexo'];
 $celular = $_POST['celular'];
 $email = $_POST['email'];
 $password = $_POST['password'];

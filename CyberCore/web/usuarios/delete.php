@@ -97,17 +97,17 @@ if(isset($_SESSION['u_usuario'])) {
                                             <div class="form-group">
                                                 <label for="">Sexo</label>
                                                 <?php
-                                                if($sexo == "HOMBRE"){?>
+                                                if($sexo == "MASCULINO"){?>
                                                     <select name="sexo" id="" CLASS="form-control" disabled>
                                                         <option value="<?php echo $sexo;?>"><?php echo $sexo;?></option>
-                                                        <option value="MUJER">MUJER</option>
+                                                        <option value="FEMENINO">FEMENINO</option>
                                                     </select>
                                                 <?php } ?>
                                                 <?php
-                                                if($sexo == "MUJER"){?>
+                                                if($sexo == "FEMENINO"){?>
                                                     <select name="sexo" id="" CLASS="form-control" disabled>
                                                         <option value="<?php echo $sexo;?>"><?php echo $sexo;?></option>
-                                                        <option value="HOMBRE">HOMBRE</option>
+                                                        <option value="MASCULINO">MASCULINO</option>
                                                     </select>
                                                 <?php } ?>
                                             </div>
