@@ -90,7 +90,7 @@ if(isset($_SESSION['u_usuario'])) {
                                                     
                                                     <td><?php echo $email;?></td>
                                                     <td>
-                                                        <a href="update?id=<?php echo $id_usuario;?>" class="btn btn-success btn-xs">
+                                                        <a href="update.php?id=<?php echo $id_usuario;?>" class="btn btn-success btn-xs">
                                                             <span class="fa fa-pen"></span> Editar</a>
                                                         <a href="delete.php?id=<?php echo $id_usuario;?>" class="btn btn-danger btn-xs">
                                                             <span class="fa fa-trash"></span> Borrar</a>

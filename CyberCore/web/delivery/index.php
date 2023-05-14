@@ -57,20 +57,20 @@ if(isset($_SESSION['u_usuario'])) {
                                             <th><b>Delivery</b></th>
                                             <th><b>Pedido</b></th>
                                             <?php
-                                            $cont_m = 0;
-                                            $query2 = $pdo->prepare("SELECT * FROM tb_repartidor WHERE estado ='1'");
+                                            $cont_r = 0;
+                                            $query2 = $pdo->prepare("SELECT * FROM tb_usuarios WHERE estado ='1' AND cargo = 'Repartidor' ");
                                             $query2->execute();
                                             $vehiculo = $query2->fetchAll(PDO::FETCH_ASSOC);
                                             foreach ($vehiculo as $vehiculo) {
-                                                $id_m = $vehiculo['id'];
-                                                $ap_paterno_m = $vehiculo['ap_paterno'];
-                                                $ap_materno_m = $vehiculo['ap_materno'];
-                                                $nombres_m = $vehiculo['nombres'];
-                                                $cont_m = $cont_m + 1;
+                                                $id_r = $vehiculo['id'];
+                                                $ap_paterno_r = $vehiculo['ap_paterno'];
+                                                $ap_materno_r = $vehiculo['ap_materno'];
+                                                $nombres_r = $vehiculo['nombres'];
+                                                $cont_r = $cont_r + 1;
                                                 ?>
                                                 <tr>
-                                                    <td><?php echo $cont_m;?></td>
-                                                    <td><?php echo $nombres_m." ".$ap_paterno_m." ".$ap_materno_m;?></td>
+                                                    <td><?php echo $cont_r;?></td>
+                                                    <td><?php echo $nombres_r." ".$ap_paterno_r." ".$ap_materno_r;?></td>
                                                 </tr>
                                                 <?php
                                             }
@@ -128,7 +128,7 @@ if(isset($_SESSION['u_usuario'])) {
                     $query2->execute();
                     $marks = $query2->fetchAll(PDO::FETCH_ASSOC);
                     foreach ($marks as $mark) {
-                    $email = $mark['id_repartidor'];
+                    $email = $mark['id_usuarios'];
                     $latitud = $mark['latitud'];
                     $longitud = $mark['longitud'];
                     $estado = $mark['estado_delivery'];
