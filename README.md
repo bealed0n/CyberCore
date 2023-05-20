@@ -15,5 +15,5 @@ Sigue los siguientes pasos para configurar el proyecto en XAMPP:
 Sigue estos pasos para configurar el proyecto en Laragon:
 
 1. Clona el repositorio ejecutando el siguiente comando en la terminal de Laragon:
-```git clone https://github.com/bealed0n/CyberCore.git
+``git clone https://github.com/bealed0n/CyberCore.git
 
