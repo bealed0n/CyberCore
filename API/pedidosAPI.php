@@ -2,39 +2,37 @@
 include "config.php";
 include "utils.php";
 
-
-$dbConn =  connect($db);
+$dbConn = connect($db);
 
 /*
   listar todos los posts o solo uno
  */
-if ($_SERVER['REQUEST_METHOD'] == 'GET')
-{
-    if (isset($_GET['id']))
-    {
-      //Mostrar un post
-      $sql = $dbConn->prepare("SELECT * FROM tb_pedidos where id_pedido=:id");
-      $sql->bindValue(':id_pedido', $_GET['id']);
-      $sql->execute();
-      header("HTTP/1.1 200 OK");
-      echo json_encode(  $sql->fetch(PDO::FETCH_ASSOC)  );
-      exit();
-	  }
-    else {
-      //Mostrar lista de post
-      $sql = $dbConn->prepare("SELECT * FROM tb_pedidos");
-      $sql->execute();
-      $sql->setFetchMode(PDO::FETCH_ASSOC);
-      header("HTTP/1.1 200 OK");
-      echo json_encode( $sql->fetchAll()  );
-      exit();
-	}
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    if (isset($_GET['id'])) {
+        //Mostrar un post
+        $sql = $dbConn->prepare("SELECT * FROM tb_pedidos where id_pedido=:id");
+        $sql->bindValue(':id', $_GET['id']);
+        $sql->execute();
+        header("HTTP/1.1 200 OK");
+        echo json_encode($sql->fetch(PDO::FETCH_ASSOC));
+        exit();
+    } else {
+        //Mostrar lista de post
+        $sql = $dbConn->prepare("SELECT * FROM tb_pedidos");
+        $sql->execute();
+        $sql->setFetchMode(PDO::FETCH_ASSOC);
+        header("HTTP/1.1 200 OK");
+        echo json_encode($sql->fetchAll());
+        exit();
+    }
 }
 
+// Leer los datos enviados en formato JSON
+$inputJSON = file_get_contents('php://input');
+$input = json_decode($inputJSON, true);
+
 // Crear un nuevo post
-if ($_SERVER['REQUEST_METHOD'] == 'POST')
-{
-    $input = $_POST;
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sql = "INSERT INTO tb_pedidos
           (nombre_cliente, rut_cliente, celular_cliente, celular_referencia_cliente, email_cliente, direccion_cliente, costo_pedido, costo_delivery, obs)
           VALUES
@@ -43,29 +41,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     bindAllValues($statement, $input);
     $statement->execute();
     $postId = $dbConn->lastInsertId();
-    if($postId)
-    {
-      $input['id'] = $postId;
-      header("HTTP/1.1 200 OK");
-      echo json_encode($input);
-      exit();
-	 }
+    if ($postId) {
+        $input['id'] = $postId;
+        header("HTTP/1.1 200 OK");
+        echo json_encode($input);
+        exit();
+    }
 }
 
 //Borrar
-if ($_SERVER['REQUEST_METHOD'] == 'DELETE')
-{
-	$id = $_GET['id'];
-  $statement = $dbConn->prepare("DELETE FROM tb_pedidos where id_pedido=:id");
-  $statement->bindValue(':id', $id);
-  $statement->execute();
-	header("HTTP/1.1 200 OK");
-	exit();
+if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
+    $id = $_GET['id'];
+    $statement = $dbConn->prepare("DELETE FROM tb_pedidos where id_pedido=:id");
+    $statement->bindValue(':id', $id);
+    $statement->execute();
+    header("HTTP/1.1 200 OK");
+    exit();
 }
 
 //Actualizar
-if ($_SERVER['REQUEST_METHOD'] == 'PUT')
-{
+if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
     $input = $_GET;
     $postId = $input['id'];
     $fields = getParams($input);
@@ -83,7 +78,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'PUT')
     header("HTTP/1.1 200 OK");
     exit();
 }
-
 
 //En caso de que ninguna de las opciones anteriores se haya ejecutado
 header("HTTP/1.1 400 Bad Request");

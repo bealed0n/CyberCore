@@ -1,6 +1,6 @@
 swagger: "2.0"
 info:
-  title: Mi API
+  title: SALUDO DE VUELTA
   version: 1.0.0
 paths:
   /cybercore/api/mi-endpoint.php:

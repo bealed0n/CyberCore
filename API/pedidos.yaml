@@ -1,0 +1,160 @@
+swagger: "2.0"
+info:
+  title: PEDIDOS
+  version: 1.0.0
+paths:
+  /cybercore/api/pedidosAPI.php:
+    get:
+      summary: Obtén información de los pedidos
+      description: Endpoint para obtener información de los pedidos.
+      responses:
+        200:
+          description: Respuesta exitosa
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                id_pedido:
+                  type: integer
+                nombre_cliente:
+                  type: string
+                rut_cliente:
+                  type: string
+                celular_cliente:
+                  type: string
+                celular_referencia_cliente:
+                  type: string
+                email_cliente:
+                  type: string
+                direccion_cliente:
+                  type: string
+                costo_pedido:
+                  type: number
+                costo_delivery:
+                  type: number
+                obs:
+                  type: string
+    post:
+      summary: Crea un nuevo pedido
+      description: Endpoint para crear un nuevo pedido.
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              nombre_cliente:
+                type: string
+              rut_cliente:
+                type: string
+              celular_cliente:
+                type: string
+              celular_referencia_cliente:
+                type: string
+              email_cliente:
+                type: string
+              direccion_cliente:
+                type: string
+              costo_pedido:
+                type: number
+              costo_delivery:
+                type: number
+              obs:
+                type: string
+      responses:
+        200:
+          description: Pedido creado exitosamente
+          schema:
+            type: object
+            properties:
+              id_pedido:
+                type: integer
+              nombre_cliente:
+                type: string
+              rut_cliente:
+                type: string
+              celular_cliente:
+                type: string
+              celular_referencia_cliente:
+                type: string
+              email_cliente:
+                type: string
+              direccion_cliente:
+                type: string
+              costo_pedido:
+                type: number
+              costo_delivery:
+                type: number
+              obs:
+                type: string
+    put:
+      summary: Actualiza un pedido existente
+      description: Endpoint para actualizar un pedido existente.
+      parameters:
+        - name: id
+          in: query
+          required: true
+          type: integer
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              nombre_cliente:
+                type: string
+              rut_cliente:
+                type: string
+              celular_cliente:
+                type: string
+              celular_referencia_cliente:
+                type: string
+              email_cliente:
+                type: string
+              direccion_cliente:
+                type: string
+              costo_pedido:
+                type: number
+              costo_delivery:
+                type: number
+              obs:
+                type: string
+      responses:
+        200:
+          description: Pedido actualizado exitosamente
+          schema:
+            type: object
+            properties:
+              id_pedido:
+                type: integer
+              nombre_cliente:
+                type: string
+              rut_cliente:
+                type: string
+              celular_cliente:
+                type: string
+              celular_referencia_cliente:
+                type: string
+              email_cliente:
+                type: string
+              direccion_cliente:
+                type: string
+              costo_pedido:
+                type: number
+              costo_delivery:
+                type: number
+              obs:
+                type: string
+    delete:
+      summary: Elimina un pedido existente
+      description: Endpoint para eliminar un pedido existente.
+      parameters:
+        - name: id
+          in: query
+          required: true
+          type: integer
+      responses:
+        200:
+          description: Pedido eliminado exitosamente
