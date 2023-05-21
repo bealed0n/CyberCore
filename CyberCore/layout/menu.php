@@ -110,14 +110,16 @@
                            </p>
                        </a>
                    </li>
-                  <!-- <li class="nav-header">REPORTES</li>
-
                    <li class="nav-item">
-                       <a href="" class="nav-link">
-                           <i class="nav-icon fas fa-file"></i>
-                           <p>Documentation</p>
+                       <a href="<?php echo $URL;?>/web/integracion/integracion.php" class="nav-link active">
+                           <i class="nav-icon fas fa-store"></i>
+                           <p>
+                               integracion
+                           </p>
                        </a>
-                   </li> -->
+                   </li>
+
+                  
                 <?php
                }
                ?>
