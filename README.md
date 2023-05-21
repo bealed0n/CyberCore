@@ -18,5 +18,7 @@ Sigue estos pasos para configurar el proyecto en Laragon:
 ```bash
 git clone https://github.com/bealed0n/CyberCore.git
 ```
-crea una base datos llamada cybercore y carga el archivo sql adjunto
-Ahora puedes entrar al proyecto a traves de http://localhost/cybercore/cybercore
+2. Crea una base de datos llamada "cybercore" en HeidiSQL.
+3. Importa el archivo de la base de datos `cybercore.sql` en HeidiSQL.
+4. Ahora puedes acceder al proyecto a través de la siguiente URL: `http://localhost/cybercore/cybercore`.
+
