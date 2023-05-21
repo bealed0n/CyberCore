@@ -18,4 +18,5 @@ Sigue estos pasos para configurar el proyecto en Laragon:
 ```bash
 git clone https://github.com/bealed0n/CyberCore.git
 ```
-
+crea una base datos llamada cybercore y carga el archivo sql adjunto
+Ahora puedes entrar al proyecto a traves de http://localhost/cybercore/cybercore
