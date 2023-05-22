@@ -2,7 +2,7 @@
 // Verificar si se ha enviado el formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Obtener el mensaje de saludo de la API
-    $response = file_get_contents('https://music-pro.test/api/v1/test/saludo');
+    $response = file_get_contents('https://musicpro.bemtorres.win/api/v1/test/saludo');
     $saludo = json_decode($response)->message;
 
     // Guardar el saludo en la base de datos
