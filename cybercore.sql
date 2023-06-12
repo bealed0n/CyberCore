@@ -14,6 +14,19 @@
 CREATE DATABASE IF NOT EXISTS `cybercore` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `cybercore`;
 
+-- Volcando estructura para tabla cybercore.estado_pedidos
+CREATE TABLE IF NOT EXISTS `estado_pedidos` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `pedido_id` int DEFAULT NULL,
+  `estado` varchar(20) DEFAULT NULL,
+  `codigo_seguimiento` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `pedido_id` (`pedido_id`),
+  CONSTRAINT `estado_pedidos_ibfk_1` FOREIGN KEY (`pedido_id`) REFERENCES `tb_pedidos` (`id_pedido`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Volcando datos para la tabla cybercore.estado_pedidos: ~0 rows (aproximadamente)
+
 -- Volcando estructura para tabla cybercore.saludos
 CREATE TABLE IF NOT EXISTS `saludos` (
   `id` int NOT NULL AUTO_INCREMENT,
