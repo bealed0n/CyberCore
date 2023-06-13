@@ -36,13 +36,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Generar código de seguimiento
     $codigoSeguimiento = generarCodigoSeguimiento(12);
 
+    // Verificar el tipo de pedido
+    $tipoPedido = $_GET['tipo_pedido']; // Obtener el valor del parámetro tipo_pedido de la URL
+
     $sql = "INSERT INTO tb_pedidos
-          (codigo_seguimiento, nombre_cliente, rut_cliente, celular_cliente, celular_referencia_cliente, email_cliente, direccion_cliente, costo_pedido, costo_delivery, obs)
+          (codigo_seguimiento, nombre_cliente, rut_cliente, celular_cliente, celular_referencia_cliente, email_cliente, direccion_cliente, costo_pedido, costo_delivery, obs, tipo_pedido)
           VALUES
-          (:codigo_seguimiento, :nombre_cliente, :rut_cliente, :celular_cliente, :celular_referencia_cliente, :email_cliente, :direccion_cliente, :costo_pedido, :costo_delivery, :obs)";
+          (:codigo_seguimiento, :nombre_cliente, :rut_cliente, :celular_cliente, :celular_referencia_cliente, :email_cliente, :direccion_cliente, :costo_pedido, :costo_delivery, :obs, :tipo_pedido)";
     $statement = $dbConn->prepare($sql);
     $statement->bindValue(':codigo_seguimiento', $codigoSeguimiento);
     bindAllValues($statement, $input);
+    $statement->bindValue(':tipo_pedido', $tipoPedido); // Asignar el tipo de pedido
+
     $statement->execute();
     $postId = $dbConn->lastInsertId();
     if ($postId) {
@@ -97,5 +102,4 @@ function generarCodigoSeguimiento($longitud = 12) {
     }
     return $codigo;
 }
-
 ?>

@@ -39,6 +39,10 @@ paths:
       summary: Crea un nuevo pedido
       description: Endpoint para crear un nuevo pedido.
       parameters:
+        - name: tipo_pedido
+          in: query
+          required: true
+          type: string
         - name: body
           in: body
           required: true

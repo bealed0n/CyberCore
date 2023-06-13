@@ -1,4 +1,9 @@
-
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Versión del servidor:         8.0.30 - MySQL Community Server - GPL
+-- SO del servidor:              Win64
+-- HeidiSQL Versión:             12.1.0.6537
+-- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET NAMES utf8 */;
@@ -94,17 +99,18 @@ CREATE TABLE IF NOT EXISTS `tb_pedidos` (
   `id_repartidor_asignado` varchar(512) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
   `estado_pedido` varchar(512) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
   `estado` varchar(255) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
+  `tipo_pedido` varchar(255) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id_pedido`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
 
--- Volcando datos para la tabla cybercore.tb_pedidos: ~10 rows (aproximadamente)
-REPLACE INTO `tb_pedidos` (`id_pedido`, `nombre_cliente`, `rut_cliente`, `celular_cliente`, `celular_referencia_cliente`, `email_cliente`, `direccion_cliente`, `id_direccion_cliente`, `costo_pedido`, `costo_delivery`, `obs`, `id_carrito`, `id_repartidor_asignado`, `estado_pedido`, `estado`) VALUES
-	(4, 'prdrito', '1-921', '940327883', '940327883', 'pedrito@gmail.com', 'isla walton 543', '', '99000', '4990', 'objeto delicado', '1', '44', 'PEDIDO FINALIZADO', '1'),
-	(5, 'matias del rio', '494-2', '940327883', '992939323', 'matiaselmismisimo@gmail.com', 'sucasa 123', '', '464490', '7000', 'arbol fuera de casa', '2', '44', 'PEDIDO FINALIZADO', '1'),
-	(9, 'probando api', '1-9201', '940327883', '940327883', 'benjita@gmail.com', 'calle muy falsa 123', NULL, NULL, '9990', 'que pasopadrino', NULL, NULL, NULL, NULL),
-	(10, 'probando api2', '1-92013', '940327883', '940327883', 'benjita23@gmail.com', 'calle muy falsa 1233', NULL, '40094', '9990', 'que pasopadrino XDDD', NULL, NULL, NULL, NULL),
-	(12, 'german toro', '83344-3', '940327883', '940327883', 'guille@gmail.com', 'isla falsa 123', '', '601980', '4500', 'delicado', '3', '45', 'ASIGNADO', '1'),
-	(13, 'Benjamín', '2323232', '940327883', '940327883', 'benjam@gmail.com', 'Isla adelaida 541', '', '600000', '5000', 'ninguna', '4', '44', 'ASIGNADO', '1');
+-- Volcando datos para la tabla cybercore.tb_pedidos: ~6 rows (aproximadamente)
+REPLACE INTO `tb_pedidos` (`id_pedido`, `nombre_cliente`, `rut_cliente`, `celular_cliente`, `celular_referencia_cliente`, `email_cliente`, `direccion_cliente`, `id_direccion_cliente`, `costo_pedido`, `costo_delivery`, `obs`, `id_carrito`, `id_repartidor_asignado`, `estado_pedido`, `estado`, `tipo_pedido`) VALUES
+	(4, 'prdrito', '1-921', '940327883', '940327883', 'pedrito@gmail.com', 'isla walton 543', '', '99000', '4990', 'objeto delicado', '1', '44', 'PEDIDO FINALIZADO', '1', NULL),
+	(5, 'matias del rio', '494-2', '940327883', '992939323', 'matiaselmismisimo@gmail.com', 'sucasa 123', '', '464490', '7000', 'arbol fuera de casa', '2', '44', 'PEDIDO FINALIZADO', '1', NULL),
+	(9, 'probando api', '1-9201', '940327883', '940327883', 'benjita@gmail.com', 'calle muy falsa 123', NULL, NULL, '9990', 'que pasopadrino', NULL, NULL, NULL, NULL, NULL),
+	(10, 'probando api2', '1-92013', '940327883', '940327883', 'benjita23@gmail.com', 'calle muy falsa 1233', NULL, '40094', '9990', 'que pasopadrino XDDD', NULL, NULL, NULL, NULL, NULL),
+	(12, 'german toro', '83344-3', '940327883', '940327883', 'guille@gmail.com', 'isla falsa 123', '', '601980', '4500', 'delicado', '3', '45', 'ASIGNADO', '1', NULL),
+	(13, 'Benjamín', '2323232', '940327883', '940327883', 'benjam@gmail.com', 'Isla adelaida 541', '', '600000', '5000', 'ninguna', '4', '44', 'ASIGNADO', '1', NULL);
 
 -- Volcando estructura para tabla cybercore.tb_usuarios
 CREATE TABLE IF NOT EXISTS `tb_usuarios` (
