@@ -57,9 +57,6 @@ if(isset($_SESSION['u_usuario'])) {
                         <div class="card card-primary card-outline">
                             <div class="card-header">
                                 <h3 class="card-title"><span class="fa fa-store"></span> Lista de Pedidos </h3>
-                                <div style="float:right;">
-                                    <a href="create.php" class="btn btn-primary"><span class="fa fa-plus"></span> Nuevo Pedido</a>
-                                </div>
                             </div> <!-- /.card-body -->
                             <div class="card-body">
                                 <div class="row">

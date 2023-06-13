@@ -1,164 +1,94 @@
 swagger: "2.0"
 info:
-  title: PEDIDOS
+  title: Documentación de la API de Pedidos
   version: 1.0.0
 paths:
-  /cybercore/api/pedidosAPI.php:
+  /cybercore/api/pedidosapi.php/pedidos:
     get:
-      summary: Obtén información de los pedidos
-      description: Endpoint para obtener información de los pedidos.
+      summary: Obtener lista de pedidos
       responses:
         200:
-          description: Respuesta exitosa
+          description: OK
           schema:
             type: array
             items:
-              type: object
-              properties:
-                id_pedido:
-                  type: integer
-                nombre_cliente:
-                  type: string
-                rut_cliente:
-                  type: string
-                celular_cliente:
-                  type: string
-                celular_referencia_cliente:
-                  type: string
-                email_cliente:
-                  type: string
-                direccion_cliente:
-                  type: string
-                costo_pedido:
-                  type: number
-                costo_delivery:
-                  type: number
-                obs:
-                  type: string
+              $ref: "#/definitions/Pedido"
     post:
-      summary: Crea un nuevo pedido
-      description: Endpoint para crear un nuevo pedido.
-      parameters:
-        - name: tipo_pedido
-          in: query
-          required: true
-          type: string
-        - name: body
-          in: body
-          required: true
-          schema:
-            type: object
-            properties:
-              nombre_cliente:
-                type: string
-              rut_cliente:
-                type: string
-              celular_cliente:
-                type: string
-              celular_referencia_cliente:
-                type: string
-              email_cliente:
-                type: string
-              direccion_cliente:
-                type: string
-              costo_pedido:
-                type: number
-              costo_delivery:
-                type: number
-              obs:
-                type: string
+      summary: Crear un nuevo pedido
       responses:
         200:
-          description: Pedido creado exitosamente
+          description: OK
           schema:
-            type: object
-            properties:
-              id_pedido:
-                type: integer
-              nombre_cliente:
-                type: string
-              rut_cliente:
-                type: string
-              celular_cliente:
-                type: string
-              celular_referencia_cliente:
-                type: string
-              email_cliente:
-                type: string
-              direccion_cliente:
-                type: string
-              costo_pedido:
-                type: number
-              costo_delivery:
-                type: number
-              obs:
-                type: string
-    put:
-      summary: Actualiza un pedido existente
-      description: Endpoint para actualizar un pedido existente.
+            $ref: "#/definitions/Pedido"
+        400:
+          description: Bad Request
+
+  /cybercore/api/pedidosapi.php?id={id}:
+    get:
+      summary: Obtener un pedido específico por su ID
       parameters:
         - name: id
-          in: query
+          in: path
+          description: ID del pedido a obtener
           required: true
           type: integer
-        - name: body
-          in: body
-          required: true
-          schema:
-            type: object
-            properties:
-              nombre_cliente:
-                type: string
-              rut_cliente:
-                type: string
-              celular_cliente:
-                type: string
-              celular_referencia_cliente:
-                type: string
-              email_cliente:
-                type: string
-              direccion_cliente:
-                type: string
-              costo_pedido:
-                type: number
-              costo_delivery:
-                type: number
-              obs:
-                type: string
       responses:
         200:
-          description: Pedido actualizado exitosamente
+          description: OK
           schema:
-            type: object
-            properties:
-              id_pedido:
-                type: integer
-              nombre_cliente:
-                type: string
-              rut_cliente:
-                type: string
-              celular_cliente:
-                type: string
-              celular_referencia_cliente:
-                type: string
-              email_cliente:
-                type: string
-              direccion_cliente:
-                type: string
-              costo_pedido:
-                type: number
-              costo_delivery:
-                type: number
-              obs:
-                type: string
+            $ref: "#/definitions/Pedido"
+        404:
+          description: Not Found
     delete:
-      summary: Elimina un pedido existente
-      description: Endpoint para eliminar un pedido existente.
+      summary: Borrar un pedido
       parameters:
         - name: id
-          in: query
+          in: path
+          description: ID del pedido a borrar
           required: true
           type: integer
       responses:
         200:
-          description: Pedido eliminado exitosamente
+          description: OK
+        404:
+          description: Not Found
+    put:
+      summary: Actualizar un pedido
+      parameters:
+        - name: id
+          in: path
+          description: ID del pedido a actualizar
+          required: true
+          type: integer
+      responses:
+        200:
+          description: OK
+        400:
+          description: Bad Request
+
+definitions:
+  Pedido:
+    type: object
+    properties:
+      id_pedido:
+        type: integer
+      nombre_cliente:
+        type: string
+      rut_cliente:
+        type: string
+      celular_cliente:
+        type: string
+      celular_referencia_cliente:
+        type: string
+      email_cliente:
+        type: string
+      direccion_cliente:
+        type: string
+      costo_pedido:
+        type: string
+      costo_delivery:
+        type: string
+      obs:
+        type: string
+      codigo_seguimiento:
+        type: string
