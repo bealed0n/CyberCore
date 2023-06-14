@@ -8,7 +8,7 @@
 <body>
   <div class="container">
     <h1>Crear un nuevo pedido!!</h1>
-    <form id="pedidoForm">
+    <form id="pedidoForm" action="https://cybercore.test/api/pedidosapi.php" method="POST">
       <div class="form-group">
         <label for="nombreCliente">Nombre del cliente:</label>
         <input type="text" class="form-control" id="nombreCliente" name="nombre_cliente" required>
@@ -49,12 +49,9 @@
     </form>
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script>
     $(document).ready(function() {
       // Manejar el envío del formulario
@@ -66,7 +63,7 @@
 
         // Enviar la solicitud AJAX
         $.ajax({
-          url: 'http://localhost/cybercore/api/pedidosapi.php/pedidos', // Reemplaza con la URL correcta de tu API
+          url: $(this).attr('action'), // Obtener la URL del atributo action del formulario
           type: 'POST', // Elige el método adecuado (GET, POST, PUT, DELETE) según tu API
           dataType: 'json', // Espera una respuesta JSON
           data: formData, // Pasar los datos del formulario

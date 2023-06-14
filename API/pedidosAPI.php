@@ -82,11 +82,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $postId = $dbConn->lastInsertId();
             if ($postId) {
                 // Insertar el código de seguimiento y el estado de delivery en la tabla correspondiente
-                $estadoDelivery = 'En proceso de entrega'; // Estado descriptivo relacionado con el delivery
-                $estadoPedidoSql = "INSERT INTO estado_pedidos (pedido_id, estado, codigo_seguimiento) VALUES (:pedido_id, :estado, :codigo_seguimiento)";
+                $estadoPedidoSql = "INSERT INTO estado_pedidos (pedido_id, estado, codigo_seguimiento) VALUES (:pedido_id, 'En proceso de entrega', :codigo_seguimiento)";
                 $estadoPedidoStatement = $dbConn->prepare($estadoPedidoSql);
                 $estadoPedidoStatement->bindValue(':pedido_id', $postId);
-                $estadoPedidoStatement->bindValue(':estado', $estadoDelivery);
                 $estadoPedidoStatement->bindValue(':codigo_seguimiento', $codigoSeguimiento);
                 $estadoPedidoStatement->execute();
 
@@ -130,14 +128,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
 
 // Actualizar
 if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
-    $input = $_GET;
+    parse_str(file_get_contents("php://input"), $putData);
+    $input = $putData;
     $postId = $input['id'];
     $fields = getParams($input);
 
     $sql = "UPDATE tb_pedidos SET $fields WHERE id_pedido=:id";
     $statement = $dbConn->prepare($sql);
     $statement->bindParam(':id', $postId);
-    bindValues($statement, $input);
+    bindAllValues($statement, $input);
 
     $statement->execute();
     header("HTTP/1.1 200 OK");
