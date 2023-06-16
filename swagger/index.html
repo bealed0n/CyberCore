@@ -13,26 +13,30 @@
 <body>
 <div id="swagger-ui1"></div>
 <div id="swagger-ui2"></div>
+<div id="swagger-ui3"></div>
+
 
 <script src="https://unpkg.com/swagger-ui-dist@4.5.0/swagger-ui-bundle.js" crossorigin></script>
 <script>
   window.onload = () => {
-    // Cargar la primera definición de API
+    // Cargar primera definición de API
     SwaggerUIBundle({
-      url: 'http://localhost/cybercore/api/mi-endpoint.yaml',
+      url: 'http://localhost/cybercore/api/codigo-bodega.yaml',
       dom_id: '#swagger-ui1',
-    });
 
-    // Cargar la segunda definición de API
+    // cargar segunda definición de API
+    }); 
     SwaggerUIBundle({
-      url: 'http://localhost/cybercore/api/pedidos.yaml',
+      url: 'http://localhost/cybercore/api/pedidos-sucursal.yaml',
       dom_id: '#swagger-ui2',
     });
+    // Cargar tercera definición de API
+    SwaggerUIBundle({
+      url: 'http://localhost/cybercore/api/pedidos-bodega.yaml',
+      dom_id: '#swagger-ui3',
+    });
+
   };
 </script>
 </body>
 </html>
-
-<!-- de manera local: -->
-<!-- http://localhost/cybercore/api/mi-endpoint.yaml -->
-<!-- http://localhost/cybercore/api/pedidos.yaml -->

@@ -73,6 +73,7 @@ if(isset($_SESSION['u_usuario'])) {
                                                 <th>Pedido Completo</th>
                                                 <th>Asignación de repartidor</th>
                                                 <th>Estado del Pedido</th>
+                                                <th>Tipo de pedido</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -91,6 +92,7 @@ if(isset($_SESSION['u_usuario'])) {
                                                 $direccion_cliente = $pedido['direccion_cliente'];
                                                 $id_repartidor_asignado = $pedido['id_repartidor_asignado'];
                                                 $estado_pedido = $pedido['estado_pedido'];
+                                                $tipo_pedido = $pedido['tipo_pedido'];
                                                 ?>
                                                 <tr>
                                                     <td><?php echo $contador_de_pedidos;?></td>
@@ -140,7 +142,6 @@ if(isset($_SESSION['u_usuario'])) {
                                                                                                     <th style=""><b>Celular</b></th>
                                                                                                     <th style=""><b>Email</b></th>
                                                                                                     <th style=""><b>Dirección</b></th>
-                                                                                                    <th style=""><b>Pedidos</b></th>
                                                                                                     <th style=""><b>Costo Total</b></th>
                                                                                                     <th style=""><b>Costo Delivery</b></th>
                                                                                                     <th style=""><b>Observación</b></th>
@@ -193,8 +194,7 @@ if(isset($_SESSION['u_usuario'])) {
                                                                                                                     ?>
                                                                                                                     <div class=""
                                                                                                                          style="font-size: 12px;border-radius: 10px">
-                                                                                                                        <h6 class="alert-heading" style="
-                                                                    margin-left: 10px;margin-right: 10px">
+                                                                                                                        <h6 class="alert-heading" style="margin-left: 10px;margin-right: 10px">
                                                                                                                             <i class="fa fa-map-marked-alt"></i> <b><?php echo $nombre_d;?></b>
                                                                                                                         </h6>
                                                                                                                         <p style="margin-left: 10px">
@@ -207,56 +207,6 @@ if(isset($_SESSION['u_usuario'])) {
                                                                                                             }
                                                                                                             ?>
                                                                                                         </td>
-
-                                                                                                        <td>
-                                                                                                            <table>
-                                                                                                                <th>Nro</th>
-                                                                                                                <th>Producto</th>
-                                                                                                                <th>Detalle</th>
-                                                                                                                <th>Cantidad</th>
-                                                                                                                <th>Precio Unitario</th>
-                                                                                                                <th>Precio Total</th>
-                                                                                                                <?php
-                                                                                                                $contador_del_carrito = 0;
-                                                                                                                $contador_de_cantidades = 0;
-                                                                                                                $contador_de_precio_u = 0;
-                                                                                                                $contador_de_precio_t = 0;
-                                                                                                                $query_carrito = $pdo->prepare("SELECT * FROM tb_carrito WHERE id_pedido = '$id_carrito_p' AND estado ='1'");
-                                                                                                                $query_carrito->execute();
-                                                                                                                $carritos = $query_carrito->fetchAll(PDO::FETCH_ASSOC);
-                                                                                                                foreach ($carritos as $carrito) {
-                                                                                                                    $id_carrito = $carrito['id'];
-                                                                                                                    $id_pedido = $carrito['id_pedido'];
-                                                                                                                    $producto = $carrito['producto'];
-                                                                                                                    $detalle = $carrito['detalle'];
-                                                                                                                    $cantidad = $carrito['cantidad'];
-                                                                                                                    $precio_u = $carrito['precio_unitario'];
-                                                                                                                    $precio_t = $carrito['precio_total'];
-                                                                                                                    $contador_del_carrito = $contador_del_carrito + 1;
-                                                                                                                    $contador_de_cantidades = $contador_de_cantidades + $cantidad;
-                                                                                                                    $contador_de_precio_u = $contador_de_precio_u + $precio_u;
-                                                                                                                    $contador_de_precio_t = $contador_de_precio_t + $precio_t;
-                                                                                                                    ?>
-                                                                                                                    <tr>
-                                                                                                                        <td><center><?php echo $contador_del_carrito;?></center></td>
-                                                                                                                        <td><?php echo $producto;?></td>
-                                                                                                                        <td><?php echo $detalle;?></td>
-                                                                                                                        <td><center><?php echo $cantidad;?></center></td>
-                                                                                                                        <td><center><?php echo $precio_u;?></center></td>
-                                                                                                                        <td><center><?php echo $precio_t;?></center></td>
-                                                                                                                    </tr>
-                                                                                                                    <?php
-                                                                                                                }
-                                                                                                                ?>
-                                                                                                                <tr>
-                                                                                                                    <td colspan="3" align="right" style="background: #c0c0c0"><b>Totales</b></td>
-                                                                                                                    <td align="right" style="background: #c0c0c0"><b><center><?php echo $contador_de_cantidades;?></center></b></td>
-                                                                                                                    <td align="right" style="background: #c0c0c0"><b><center><?php echo $contador_de_precio_u;?></center></b></td>
-                                                                                                                    <td align="right" style="background: #c0c0c0"><b><center><?php echo $contador_de_precio_t;?></center></b></td>
-                                                                                                                </tr>
-                                                                                                            </table>
-                                                                                                        </td>
-
                                                                                                         <td><center><?php echo $costo_pedido_p;?></center></td>
                                                                                                         <td><center><?php echo $costo_delivery_p;?></center></td>
                                                                                                         <td><?php echo $obs_p;?></td>
@@ -394,6 +344,9 @@ if(isset($_SESSION['u_usuario'])) {
                                                     </td>
                                                     <td>
                                                         <?php echo $estado_pedido;?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $tipo_pedido;?>
                                                     </td>
                                                 </tr>
                                                 <?php

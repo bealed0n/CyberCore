@@ -11,7 +11,7 @@ $dbConn = connect($db);
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (isset($_GET['id'])) {
         // Mostrar un pedido específico
-        $sql = $dbConn->prepare("SELECT * FROM tb_pedidos WHERE id_pedido=:id");
+        $sql = $dbConn->prepare("SELECT * FROM tb_pedidos WHERE id_pedido=:id and tipo_pedido='sucursal'");
         $sql->bindValue(':id', $_GET['id']);
         $sql->execute();
         $result = $sql->fetch(PDO::FETCH_ASSOC);
@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         exit();
     } else {
         // Mostrar lista de pedidos
-        $sql = $dbConn->prepare("SELECT * FROM tb_pedidos");
+        $sql = $dbConn->prepare("SELECT * FROM tb_pedidos where tipo_pedido='sucursal'");
         $sql->execute();
         $results = $sql->fetchAll(PDO::FETCH_ASSOC);
         header("Content-Type: application/json");
@@ -61,9 +61,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Preparar la consulta SQL para insertar el pedido
         $sql = "INSERT INTO tb_pedidos
-              (nombre_cliente, rut_cliente, celular_cliente, celular_referencia_cliente, email_cliente, direccion_cliente, costo_pedido, costo_delivery, obs, estado, tipo_pedido)
+              (nombre_cliente, rut_cliente, celular_cliente, celular_referencia_cliente, email_cliente, direccion_cliente, costo_pedido, costo_delivery, obs, estado_pedido, estado, tipo_pedido)
               VALUES
-              (:nombre_cliente, :rut_cliente, :celular_cliente, :celular_referencia_cliente, :email_cliente, :direccion_cliente, :costo_pedido, :costo_delivery, :obs, 1, 'sucursal')";
+              (:nombre_cliente, :rut_cliente, :celular_cliente, :celular_referencia_cliente, :email_cliente, :direccion_cliente, :costo_pedido, :costo_delivery, :obs,'PREPARANDO' , 1, 'SUCURSAL')";
         $statement = $dbConn->prepare($sql);
 
         // Vincular los valores a los parámetros de la consulta preparada
@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $postId = $dbConn->lastInsertId();
             if ($postId) {
                 // Insertar el código de seguimiento y el estado de delivery en la tabla correspondiente
-                $estadoPedidoSql = "INSERT INTO estado_pedidos (pedido_id, estado, codigo_seguimiento) VALUES (:pedido_id, 'En proceso de entrega', :codigo_seguimiento)";
+                $estadoPedidoSql = "INSERT INTO estado_pedidos (pedido_id, estado, codigo_seguimiento) VALUES (:pedido_id, 'Preparando pedido', :codigo_seguimiento)";
                 $estadoPedidoStatement = $dbConn->prepare($estadoPedidoSql);
                 $estadoPedidoStatement->bindValue(':pedido_id', $postId);
                 $estadoPedidoStatement->bindValue(':codigo_seguimiento', $codigoSeguimiento);

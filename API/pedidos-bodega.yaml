@@ -1,9 +1,9 @@
 swagger: "2.0"
 info:
-  title: Documentación de la API de Pedidos
+  title: Documentación de la API de Pedidos para BODEGA
   version: 1.0.0
 paths:
-  /cybercore/api/pedidosapi.php/pedidos:
+  /cybercore/api/pedidosapi_bodega.php/pedidos:
     get:
       summary: Obtener lista de pedidos
       responses:
@@ -23,7 +23,7 @@ paths:
         400:
           description: Bad Request
 
-  /cybercore/api/pedidosapi.php?id={id}:
+  /cybercore/api/pedidosapi_bodega.php?id={id}:
     get:
       summary: Obtener un pedido específico por su ID
       parameters:

@@ -1,0 +1,94 @@
+swagger: "2.0"
+info:
+  title: Documentación de la API de Pedidos para SUCURSAL
+  version: 1.0.0
+paths:
+  /cybercore/api/pedidosapi_sucursal.php/pedidos:
+    get:
+      summary: Obtener lista de pedidos
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Pedido"
+    post:
+      summary: Crear un nuevo pedido
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Pedido"
+        400:
+          description: Bad Request
+
+  /cybercore/api/pedidosapi_sucursal.php?id={id}:
+    get:
+      summary: Obtener un pedido específico por su ID
+      parameters:
+        - name: id
+          in: path
+          description: ID del pedido a obtener
+          required: true
+          type: integer
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Pedido"
+        404:
+          description: Not Found
+    delete:
+      summary: Borrar un pedido
+      parameters:
+        - name: id
+          in: path
+          description: ID del pedido a borrar
+          required: true
+          type: integer
+      responses:
+        200:
+          description: OK
+        404:
+          description: Not Found
+    put:
+      summary: Actualizar un pedido
+      parameters:
+        - name: id
+          in: path
+          description: ID del pedido a actualizar
+          required: true
+          type: integer
+      responses:
+        200:
+          description: OK
+        400:
+          description: Bad Request
+
+definitions:
+  Pedido:
+    type: object
+    properties:
+      id_pedido:
+        type: integer
+      nombre_cliente:
+        type: string
+      rut_cliente:
+        type: string
+      celular_cliente:
+        type: string
+      celular_referencia_cliente:
+        type: string
+      email_cliente:
+        type: string
+      direccion_cliente:
+        type: string
+      costo_pedido:
+        type: string
+      costo_delivery:
+        type: string
+      obs:
+        type: string
+      codigo_seguimiento:
+        type: string

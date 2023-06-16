@@ -8,7 +8,7 @@
 <body>
   <div class="container">
     <h1>Crear un nuevo pedido!!</h1>
-    <form id="pedidoForm" action="https://cybercore.test/api/pedidosapi.php" method="POST">
+    <form id="pedidoForm" action="https://cybercore.test/api/pedidosapi_bodega.php" method="POST">
       <div class="form-group">
         <label for="nombreCliente">Nombre del cliente:</label>
         <input type="text" class="form-control" id="nombreCliente" name="nombre_cliente" required>
