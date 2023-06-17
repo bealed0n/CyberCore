@@ -70,8 +70,6 @@ definitions:
   Pedido:
     type: object
     properties:
-      id_pedido:
-        type: integer
       nombre_cliente:
         type: string
       rut_cliente:
@@ -89,6 +87,4 @@ definitions:
       costo_delivery:
         type: string
       obs:
-        type: string
-      codigo_seguimiento:
         type: string
