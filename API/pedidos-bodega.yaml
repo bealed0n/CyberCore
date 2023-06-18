@@ -70,21 +70,17 @@ definitions:
   Pedido:
     type: object
     properties:
-      nombre_cliente:
+      nombre_origen:
         type: string
-      rut_cliente:
+      direccion_origen:
         type: string
-      celular_cliente:
+      celular_origen:
         type: string
-      celular_referencia_cliente:
+      nombre_destino:
         type: string
-      email_cliente:
+      direccion_destino:
         type: string
-      direccion_cliente:
-        type: string
-      costo_pedido:
-        type: string
-      costo_delivery:
+      celular_destino:
         type: string
       obs:
         type: string

@@ -66,10 +66,10 @@ if(isset($_SESSION['u_usuario'])) {
                                             <thead>
                                             <tr>
                                                 <th>Nro</th>
-                                                <th>Cliente</th>
-                                                <th>Rut</th>
-                                                <th>Celular</th>
-                                                <th>Dirección</th>
+                                                <th>Cliente origen</th>
+                                                <th>direccion origen</th>
+                                                <th>Celular destinatario</th>
+                                                <th>Dirección destino</th>
                                                 <th>Pedido Completo</th>
                                                 <th>Asignación de repartidor</th>
                                                 <th>Estado del Pedido</th>
@@ -85,11 +85,10 @@ if(isset($_SESSION['u_usuario'])) {
                                             foreach ($pedidos as $pedido) {
                                                 $contador_de_pedidos = $contador_de_pedidos + 1;
                                                 $id_pedidos = $pedido['id_pedido'];
-                                                $cliente = $pedido['nombre_cliente'];
-                                                $rut_cliente = $pedido['rut_cliente'];
-                                                $celular_cliente = $pedido['celular_cliente'];
-                                                $celular_referencia_cliente = $pedido['celular_referencia_cliente'];
-                                                $direccion_cliente = $pedido['direccion_cliente'];
+                                                $cliente = $pedido['nombre_origen'];
+                                                $rut_cliente = $pedido['direccion_origen'];
+                                                $celular_cliente = $pedido['celular_origen'];
+                                                $direccion_cliente = $pedido['direccion_destino'];
                                                 $id_repartidor_asignado = $pedido['id_repartidor_asignado'];
                                                 $estado_pedido = $pedido['estado_pedido'];
                                                 $tipo_pedido = $pedido['tipo_pedido'];
@@ -105,11 +104,7 @@ if(isset($_SESSION['u_usuario'])) {
                                                             <?php echo $celular_cliente;?>
                                                         </a>
                                                         <br>
-                                                        <a href="<?php echo "https://api.whatsapp.com/send?phone=56".$celular_referencia_cliente  ;?>"
-                                                           class="btn btn-success btn-xs" target="_blank" style="margin-top: 5px">
-                                                            <i class="fab fa-whatsapp"></i>
-                                                            <?php echo $celular_referencia_cliente;?>
-                                                        </a>
+        
                                                     </td>
                                                     <td><?php echo $direccion_cliente;?></td>
                                                     <td>
@@ -137,13 +132,13 @@ if(isset($_SESSION['u_usuario'])) {
                                                                                             <table class="table table-bordered table-striped table-sm" style="font-size: 13px">
                                                                                                 <thead>
                                                                                                 <tr>
-                                                                                                    <th style=""><b>Nombre Cliente</b></th>
-                                                                                                    <th style=""><b>Rut</b></th>
-                                                                                                    <th style=""><b>Celular</b></th>
-                                                                                                    <th style=""><b>Email</b></th>
-                                                                                                    <th style=""><b>Dirección</b></th>
-                                                                                                    <th style=""><b>Costo Total</b></th>
-                                                                                                    <th style=""><b>Costo Delivery</b></th>
+                                                                                                    <th style=""><b>Cliente origen</b></th>
+                                                                                                    <th style=""><b>Direccion origen</b></th>
+                                                                                                    <th style=""><b>Celular origen</b></th>
+                                                                                                    <th style=""><b>Nombre de destinatario</b></th>
+                                                                                                    <th style=""><b>Dirección de destino</b></th>
+                                                                                                    <th style=""><b>Celular destinatario</b></th>
+                                                                                                    <th style=""><b>Tipo de pedido</b></th>
                                                                                                     <th style=""><b>Observación</b></th>
                                                                                                 </tr>
                                                                                                 </thead>
@@ -154,58 +149,27 @@ if(isset($_SESSION['u_usuario'])) {
                                                                                                 $pedidos2 = $query_pedidos2->fetchAll(PDO::FETCH_ASSOC);
                                                                                                 foreach ($pedidos2 as $pedido2) {
                                                                                                     $id_p = $pedido2['id_pedido'];
-                                                                                                    $nombre_cliente_p = $pedido2['nombre_cliente'];
-                                                                                                    $rut_cliente_p = $pedido2['rut_cliente'];
-                                                                                                    $celular_cliente_p = $pedido2['celular_cliente'];
-                                                                                                    $celular_cliente_r_p = $pedido2['celular_referencia_cliente'];
-                                                                                                    $email_cliente_p = $pedido2['email_cliente'];
-                                                                                                    $direccion_cliente_p = $pedido2['direccion_cliente'];
-                                                                                                    $id_direccion_cliente_p = $pedido2['id_direccion_cliente'];
-                                                                                                    $costo_pedido_p = $pedido2['costo_pedido'];
-                                                                                                    $costo_delivery_p = $pedido2['costo_delivery'];
+                                                                                                    $nombre_cliente_p = $pedido2['nombre_origen'];
+                                                                                                    $rut_cliente_p = $pedido2['direccion_origen'];
+                                                                                                    $celular_cliente_p = $pedido2['celular_origen'];
+                                                                                                    // $celular_cliente_r_p = $pedido2['celular_destino'];
+                                                                                                    $email_cliente_p = $pedido2['nombre_destino'];
+                                                                                                    $direccion_cliente_p = $pedido2['direccion_destino'];
+                                                                                                    // $id_direccion_cliente_p = $pedido2['id_direccion_cliente'];
+                                                                                                    $costo_pedido_p = $pedido2['celular_destino'];
+                                                                                                    $costo_delivery_p = $pedido2['tipo_pedido'];
                                                                                                     $obs_p = $pedido2['obs'];
-                                                                                                    $id_carrito_p = $pedido2['id_carrito'];
+                                                                                                    // $id_carrito_p = $pedido2['id_carrito'];
                                                                                                     ?>
                                                                                                     <tr>
                                                                                                         <td><?php echo $nombre_cliente_p;?></td>
                                                                                                         <td><?php echo $rut_cliente_p;?></td>
                                                                                                         <td>
                                                                                                             <?php echo $celular_cliente_p;?>
-                                                                                                            <br>
-                                                                                                            <?php echo $celular_cliente_r_p;?>
                                                                                                         </td>
                                                                                                         <td><?php echo $email_cliente_p;?></td>
 
-                                                                                                        <td>
-                                                                                                            <?php
-
-                                                                                                            if($id_direccion_cliente_p == ""){
-                                                                                                                echo $direccion_cliente_p;
-                                                                                                            }else{
-                                                                                                                $query_direccion = $pdo->prepare("SELECT * FROM tb_mis_direcciones WHERE id = '$id_direccion_cliente_p' AND estado ='1'");
-                                                                                                                $query_direccion->execute();
-                                                                                                                $dires = $query_direccion->fetchAll(PDO::FETCH_ASSOC);
-                                                                                                                foreach ($dires as $dire) {
-                                                                                                                    $id_dire = $dire['id'];
-                                                                                                                    $email_d = $dire['email'];
-                                                                                                                    $nombre_d = $dire['nombre_direccion'];
-                                                                                                                    $direccion_d = $dire['direccion'];
-                                                                                                                    $referencia_d = $dire['referencia'];
-                                                                                                                    ?>
-                                                                                                                    <div class=""
-                                                                                                                         style="font-size: 12px;border-radius: 10px">
-                                                                                                                        <h6 class="alert-heading" style="margin-left: 10px;margin-right: 10px">
-                                                                                                                            <i class="fa fa-map-marked-alt"></i> <b><?php echo $nombre_d;?></b>
-                                                                                                                        </h6>
-                                                                                                                        <p style="margin-left: 10px">
-                                                                                                                            <?php echo $direccion_d;?> <br>
-                                                                                                                            <span style="margin-top: 5px;color: #bc32ee">Ref. <?php echo $referencia_d;?></span>
-                                                                                                                        </p>
-                                                                                                                    </div>
-                                                                                                                    <?php
-                                                                                                                }
-                                                                                                            }
-                                                                                                            ?>
+                                                                                                        <td><?php echo $direccion_cliente_p;?>
                                                                                                         </td>
                                                                                                         <td><center><?php echo $costo_pedido_p;?></center></td>
                                                                                                         <td><center><?php echo $costo_delivery_p;?></center></td>

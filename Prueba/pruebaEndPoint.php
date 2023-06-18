@@ -10,36 +10,28 @@
     <h1>Crear un nuevo pedido!!</h1>
     <form id="pedidoForm" action="https://cybercore.test/api/pedidosapi_bodega.php" method="POST">
       <div class="form-group">
-        <label for="nombreCliente">Nombre del cliente:</label>
-        <input type="text" class="form-control" id="nombreCliente" name="nombre_cliente" required>
+        <label for="nombreOrigen">Nombre de origen:</label>
+        <input type="text" class="form-control" id="nombreOrigen" name="nombre_origen" required>
       </div>
       <div class="form-group">
-        <label for="rutCliente">RUT del cliente:</label>
-        <input type="text" class="form-control" id="rutCliente" name="rut_cliente" required>
+        <label for="direccionOrigen">direccion origen:</label>
+        <input type="text" class="form-control" id="direccionOrigen" name="direccion_origen" required>
       </div>
       <div class="form-group">
-        <label for="celularCliente">Celular del cliente:</label>
-        <input type="text" class="form-control" id="celularCliente" name="celular_cliente" required>
+        <label for="celularOrigen">Celular de origen:</label>
+        <input type="text" class="form-control" id="celularOrigen" name="celular_origen" required>
       </div>
       <div class="form-group">
-        <label for="celularReferencia">Celular de referencia:</label>
-        <input type="text" class="form-control" id="celularReferencia" name="celular_referencia_cliente" required>
+        <label for="nombreDestino">nombre destino:</label>
+        <input type="text" class="form-control" id="nombreDestino" name="nombre_destino" required>
       </div>
       <div class="form-group">
-        <label for="emailCliente">Email del cliente:</label>
-        <input type="email" class="form-control" id="emailCliente" name="email_cliente" required>
+        <label for="direccionDestino">direccion de destino:</label>
+        <input type="text" class="form-control" id="direccionDestino" name="direccion_destino" required>
       </div>
       <div class="form-group">
-        <label for="direccionCliente">Dirección del cliente:</label>
-        <input type="text" class="form-control" id="direccionCliente" name="direccion_cliente" required>
-      </div>
-      <div class="form-group">
-        <label for="costoPedido">Costo del pedido:</label>
-        <input type="text" class="form-control" id="costoPedido" name="costo_pedido" required>
-      </div>
-      <div class="form-group">
-        <label for="costoDelivery">Costo del delivery:</label>
-        <input type="text" class="form-control" id="costoDelivery" name="costo_delivery" required>
+        <label for="celularDestino">celular destino:</label>
+        <input type="text" class="form-control" id="celularDestino" name="celular_destino" required>
       </div>
       <div class="form-group">
         <label for="obs">Observaciones:</label>

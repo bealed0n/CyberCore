@@ -14,7 +14,7 @@ paths:
             items:
               $ref: "#/definitions/Pedido"
     post:
-      summary: Crear un nuevo pedido
+      summary: Crear un nuevo pedido donde id
       responses:
         200:
           description: OK
@@ -25,7 +25,7 @@ paths:
 
   /cybercore/api/pedidosapi_sucursal.php?id={id}:
     get:
-      summary: Obtener un pedido específico por su ID
+      summary: Obtener un pedido específico por su ID 
       parameters:
         - name: id
           in: path
@@ -78,7 +78,7 @@ definitions:
         type: string
       celular_referencia_cliente:
         type: string
-      email_cliente:
+      direccion_origen:
         type: string
       direccion_cliente:
         type: string

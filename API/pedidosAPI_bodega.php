@@ -46,35 +46,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $codigoSeguimiento = generarCodigoSeguimiento(12);
 
     // Verificar si los datos del pedido se enviaron correctamente
-    if (isset($_POST['nombre_cliente']) && isset($_POST['rut_cliente']) && isset($_POST['celular_cliente']) && isset($_POST['celular_referencia_cliente']) && isset($_POST['email_cliente']) && isset($_POST['direccion_cliente']) && isset($_POST['costo_pedido']) && isset($_POST['costo_delivery']) && isset($_POST['obs'])) {
+    if (isset($_POST['nombre_origen']) && isset($_POST['direccion_origen']) && isset($_POST['celular_origen']) && isset($_POST['nombre_destino']) && isset($_POST['direccion_destino']) && isset($_POST['celular_destino']) && isset($_POST['obs'])) {
 
         // Obtener los datos del pedido del cuerpo de la solicitud
-        $nombreCliente = $_POST['nombre_cliente'];
-        $rutCliente = $_POST['rut_cliente'];
-        $celularCliente = $_POST['celular_cliente'];
-        $celularReferenciaCliente = $_POST['celular_referencia_cliente'];
-        $emailCliente = $_POST['email_cliente'];
-        $direccionCliente = $_POST['direccion_cliente'];
-        $costoPedido = $_POST['costo_pedido'];
-        $costoDelivery = $_POST['costo_delivery'];
+        $nombreOrigen = $_POST['nombre_origen'];
+        $direccionOrigen = $_POST['direccion_origen'];
+        $celularOrigen = $_POST['celular_origen'];
+        $nombreDestino = $_POST['nombre_destino'];
+        $direccionDestino = $_POST['direccion_destino'];
+        $celularDestino = $_POST['celular_destino'];
         $obs = $_POST['obs'];
 
         // Preparar la consulta SQL para insertar el pedido
         $sql = "INSERT INTO tb_pedidos
-              (nombre_cliente, rut_cliente, celular_cliente, celular_referencia_cliente, email_cliente, direccion_cliente, costo_pedido, costo_delivery, obs, estado_pedido, estado, tipo_pedido)
+              (nombre_origen, direccion_origen, celular_origen, nombre_destino, direccion_destino, celular_destino, obs, estado_pedido, estado, tipo_pedido)
               VALUES
-              (:nombre_cliente, :rut_cliente, :celular_cliente, :celular_referencia_cliente, :email_cliente, :direccion_cliente, :costo_pedido, :costo_delivery, :obs, 'PREPARANDO' , 1, 'BODEGA')";
+              (:nombre_origen, :direccion_origen, :celular_origen, :nombre_destino, :direccion_destino, :celular_destino, :obs, 'PREPARANDO' , 1, 'BODEGA')";
         $statement = $dbConn->prepare($sql);
 
         // Vincular los valores a los parámetros de la consulta preparada
-        $statement->bindParam(':nombre_cliente', $nombreCliente);
-        $statement->bindParam(':rut_cliente', $rutCliente);
-        $statement->bindParam(':celular_cliente', $celularCliente);
-        $statement->bindParam(':celular_referencia_cliente', $celularReferenciaCliente);
-        $statement->bindParam(':email_cliente', $emailCliente);
-        $statement->bindParam(':direccion_cliente', $direccionCliente);
-        $statement->bindParam(':costo_pedido', $costoPedido);
-        $statement->bindParam(':costo_delivery', $costoDelivery);
+        $statement->bindParam(':nombre_origen', $nombreOrigen);
+        $statement->bindParam(':direccion_origen', $direccionOrigen);
+        $statement->bindParam(':celular_origen', $celularOrigen);
+        $statement->bindParam(':nombre_destino', $nombreDestino);
+        $statement->bindParam(':direccion_destino', $direccionDestino);
+        $statement->bindParam(':celular_destino', $celularDestino);
         $statement->bindParam(':obs', $obs);
 
         // Ejecutar la consulta
@@ -90,14 +86,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 $response = array(
                     'id_pedido' => $postId,
-                    'nombre_cliente' => $nombreCliente,
-                    'rut_cliente' => $rutCliente,
-                    'celular_cliente' => $celularCliente,
-                    'celular_referencia_cliente' => $celularReferenciaCliente,
-                    'email_cliente' => $emailCliente,
-                    'direccion_cliente' => $direccionCliente,
-                    'costo_pedido' => $costoPedido,
-                    'costo_delivery' => $costoDelivery,
+                    'nombre_origen' => $nombreOrigen,
+                    'direccion_origen' => $direccionOrigen,
+                    'celular_origen' => $celularOrigen,
+                    'nombre_destino' => $nombreDestino,
+                    'direccion_destino' => $direccionDestino,
+                    'celular_destino' => $celularDestino,
                     'obs' => $obs,
                     'codigo_seguimiento' => $codigoSeguimiento
                 );
