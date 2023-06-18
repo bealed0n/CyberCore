@@ -54,11 +54,11 @@ if(isset($_SESSION['u_usuario'])) {
             $pedidos = $query_pedidos->fetchAll(PDO::FETCH_ASSOC);
             foreach ($pedidos as $pedido) {
                 $id_pedidos = $pedido['id_pedido'];
-                $cliente = $pedido['nombre_cliente'];
-                $rut_cliente = $pedido['rut_cliente'];
-                $celular_cliente = $pedido['celular_cliente'];
-                $celular_referencia_cliente = $pedido['celular_referencia_cliente'];
-                $direccion_cliente = $pedido['direccion_cliente'];
+                $cliente = $pedido['nombre_origen'];
+                $rut_cliente = $pedido['direccion_origen'];
+                $celular_cliente = $pedido['celular_origen'];
+                $celular_referencia_cliente = $pedido['celular_destino'];
+                $direccion_cliente = $pedido['direccion_destino'];
                 $id_repartidor_asignado = $pedido['id_repartidor_asignado'];
                 $estado_pedido = $pedido['estado_pedido'];
 
@@ -98,7 +98,11 @@ if(isset($_SESSION['u_usuario'])) {
                              <i class="fas fa-user"></i>
                                 <?php echo $cliente;?>
                            </span>
-
+                            <br>
+                            <p align="justify">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <?php echo $rut_cliente;?>
+                            </p>
                             <p align="justify">
                                 <i class="fas fa-map-marker-alt"></i>
                                 <?php echo $direccion_cliente;?>
@@ -108,10 +112,12 @@ if(isset($_SESSION['u_usuario'])) {
                                <a href="<?php echo "https://api.whatsapp.com/send?phone=56".$celular_cliente."&text=Hola";?>"
                                   class="btn btn-success btn-xs">
                                <i class="fab fa-whatsapp"></i> <?php echo $celular_cliente;?>
+                               <?php echo "Origen"?>
                                </a>
                                <a href="<?php echo "https://api.whatsapp.com/send?phone=56".$celular_referencia_cliente."&text=Hola";?>"
-                                  class="btn btn-success btn-xs">
+                                  class="btn btn-success btn-xs" title="Destinatario">
                                <i class="fab fa-whatsapp"></i> <?php echo $celular_referencia_cliente;?>
+                               <?php echo "Destinatario"?>
                                </a>
                            </span>
 

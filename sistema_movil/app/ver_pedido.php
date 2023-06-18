@@ -13,18 +13,18 @@ $query_pedidos->execute();
 $pedidos = $query_pedidos->fetchAll(PDO::FETCH_ASSOC);
 foreach ($pedidos as $pedido) {
     $id_pedidos_p = $pedido['id_pedido'];
-    $cliente = $pedido['nombre_cliente'];
-    $rut_cliente = $pedido['rut_cliente'];
-    $celular_cliente = $pedido['celular_cliente'];
-    $celular_referencia_cliente = $pedido['celular_referencia_cliente'];
-    $email_cliente = $pedido['email_cliente'];
-    $direccion_cliente = $pedido['direccion_cliente'];
-    $id_direccion_cliente = $pedido['id_direccion_cliente'];
-    $costo_pedido = $pedido['costo_pedido'];
-    $costo_delivery = $pedido['costo_delivery'];
+    $cliente = $pedido['nombre_origen'];
+    $rut_cliente = $pedido['direccion_origen'];
+    $celular_cliente = $pedido['celular_origen'];
+    $celular_referencia_cliente = $pedido['celular_destino'];
+    $email_cliente = $pedido['direccion_destino'];
+    $direccion_cliente = $pedido['direccion_destino'];
+    // $id_direccion_cliente = $pedido['id_direccion_cliente'];
+    // $costo_pedido = $pedido['costo_pedido'];
+    // $costo_delivery = $pedido['costo_delivery'];
     $obs = $pedido['obs'];
     $tipo_pedido = $pedido['tipo_pedido'];
-    $id_carrito = $pedido['id_carrito'];
+    // $id_carrito = $pedido['id_carrito'];
     $id_repartidor_asignado = $pedido['id_repartidor_asignado'];
     $estado_pedido = $pedido['estado_pedido'];
 }
@@ -45,44 +45,27 @@ foreach ($pedidos as $pedido) {
     <div class="">
         <h5>
             <i class="fa fa-user" style="color: #00558F"></i>
-            <b style="color: #00558F"> Datos del Cliente</b>
+            <b style="color: #00558F"> Datos de delivery</b>
         </h5>
         <hr>
         <p>
             <b>Cliente:</b> <?php echo $cliente;?> <br>
-            <b>RUT:</b> <?php echo $rut_cliente;?> <br>
-            <b>Celular:</b> <?php echo $celular_cliente;?> <br>
-            <b>Cel. de referencia:</b> <?php echo $celular_referencia_cliente;?> <br>
-            <b>Email del Cliente:</b> <?php echo $email_cliente;?> <br>
+            <b>Direccion de origen:</b> <?php echo $rut_cliente;?> <br>
+            <b>Celular origen:</b> <?php echo $celular_cliente;?> <br>
+            <b>Celular destinatario:</b> <?php echo $celular_referencia_cliente;?> <br>
+            <b>Direccion de destinatario:</b> <?php echo $email_cliente;?> <br>
             <b>Tipo de Pedido:</b> <?php echo $tipo_pedido;?> <br>
         <hr>
         <h5>
             <i class="fa fa-map-marked-alt" style="color: #00558F"></i>
-            <b style="color: #00558F"> Dirección de Entrega</b>
+            <b style="color: #00558F"> Direcciónes de Entrega</b>
         </h5>
         <hr>
             <?php
-            if($id_direccion_cliente == "")
-            {
-                echo "<b>Dirección del Cliente:</b>".$direccion_cliente."<br>";
-            }
+                echo "<b>Dirección de origen: </b>".$rut_cliente."<br> <br>";
+                echo "<b>Dirección de destino: </b>".$direccion_cliente."<br>";
             ?>
         <hr>
-    
-        <span>
-            <i class="fa fa-money-bill" style="color: #00558F"></i>
-            <b style="color: #00558F">Costo del Pedido: <span style="font-size: 25px">$<?php echo $costo_pedido;?></span></b>
-        </span>
-        <br>
-        <span>
-            <i class="fa fa-motorcycle" style="color: #00558F"></i>
-            <b style="color: #00558F">Costo del Delivery: <span style="font-size: 25px">$<?php echo $costo_delivery;?></span></b>
-        </span>
-        <hr>
-        <span>
-            <b style="color: #00558F">Costo Total: <span style="font-size: 25px">$<?php echo $costo_total = $costo_pedido + $costo_delivery;?></span></b>
-        </span>
-        <br><br>
         <?php
         if($obs == ""){
 
