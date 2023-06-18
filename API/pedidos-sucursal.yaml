@@ -14,7 +14,7 @@ paths:
             items:
               $ref: "#/definitions/Pedido"
     post:
-      summary: Crear un nuevo pedido donde id
+      summary: Crear un nuevo pedido
       responses:
         200:
           description: OK
@@ -25,7 +25,7 @@ paths:
 
   /cybercore/api/pedidosapi_sucursal.php?id={id}:
     get:
-      summary: Obtener un pedido específico por su ID 
+      summary: Obtener un pedido específico por su ID
       parameters:
         - name: id
           in: path
@@ -39,52 +39,22 @@ paths:
             $ref: "#/definitions/Pedido"
         404:
           description: Not Found
-    delete:
-      summary: Borrar un pedido
-      parameters:
-        - name: id
-          in: path
-          description: ID del pedido a borrar
-          required: true
-          type: integer
-      responses:
-        200:
-          description: OK
-        404:
-          description: Not Found
-    put:
-      summary: Actualizar un pedido
-      parameters:
-        - name: id
-          in: path
-          description: ID del pedido a actualizar
-          required: true
-          type: integer
-      responses:
-        200:
-          description: OK
-        400:
-          description: Bad Request
 
 definitions:
   Pedido:
     type: object
     properties:
-      nombre_cliente:
-        type: string
-      rut_cliente:
-        type: string
-      celular_cliente:
-        type: string
-      celular_referencia_cliente:
+      nombre_origen:
         type: string
       direccion_origen:
         type: string
-      direccion_cliente:
+      celular_origen:
         type: string
-      costo_pedido:
+      nombre_destino:
         type: string
-      costo_delivery:
+      direccion_destino:
+        type: string
+      celular_destino:
         type: string
       obs:
         type: string

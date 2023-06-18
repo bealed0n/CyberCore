@@ -39,32 +39,6 @@ paths:
             $ref: "#/definitions/Pedido"
         404:
           description: Not Found
-    delete:
-      summary: Borrar un pedido
-      parameters:
-        - name: id
-          in: path
-          description: ID del pedido a borrar
-          required: true
-          type: integer
-      responses:
-        200:
-          description: OK
-        404:
-          description: Not Found
-    put:
-      summary: Actualizar un pedido
-      parameters:
-        - name: id
-          in: path
-          description: ID del pedido a actualizar
-          required: true
-          type: integer
-      responses:
-        200:
-          description: OK
-        400:
-          description: Bad Request
 
 definitions:
   Pedido:
