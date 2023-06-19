@@ -1,18 +1,22 @@
 swagger: "2.0"
 info:
   title: Estado de Pedido API
-  description: API para obtener el estado de un pedido específico mediante el código de seguimiento
+  description: API para obtener el estado de un pedido específico mediante el código de seguimiento o el ID de pedido
   version: 1.0.0
 paths:
   /cybercore/api/codigo_seguimientoAPI.php/estado:
     get:
       summary: Obtener estado de un pedido
-      description: Obtiene el estado de un pedido específico utilizando el código de seguimiento.
+      description: Obtiene el estado de un pedido específico utilizando el código de seguimiento o el ID de pedido (no es necesario tener ambos).
       parameters:
         - in: query
           name: codigo_seguimiento
-          required: true
           description: Código de seguimiento del pedido
+          schema:
+            type: string
+        - in: query
+          name: pedido_id
+          description: ID del pedido
           schema:
             type: string
       responses:
