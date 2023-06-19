@@ -23,40 +23,23 @@ USE `cybercore`;
 CREATE TABLE IF NOT EXISTS `estado_pedidos` (
   `id` int NOT NULL AUTO_INCREMENT,
   `pedido_id` int DEFAULT NULL,
-  `estado` varchar(20) DEFAULT NULL,
+  `estado` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `codigo_seguimiento` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `pedido_id` (`pedido_id`),
   CONSTRAINT `estado_pedidos_ibfk_1` FOREIGN KEY (`pedido_id`) REFERENCES `tb_pedidos` (`id_pedido`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla cybercore.estado_pedidos: ~0 rows (aproximadamente)
-
--- Volcando estructura para tabla cybercore.saludos
-CREATE TABLE IF NOT EXISTS `saludos` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `mensaje` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Volcando datos para la tabla cybercore.saludos: ~16 rows (aproximadamente)
-REPLACE INTO `saludos` (`id`, `mensaje`) VALUES
-	(1, 'Hola como estas'),
-	(2, 'Hola como estas'),
-	(3, 'Hola como estas'),
-	(4, 'Hola como estas'),
-	(5, 'Hola como estas'),
-	(6, 'Hola como estas'),
-	(7, 'Hola como estas'),
-	(8, 'Hola como estas'),
-	(9, 'Hola como estas'),
-	(10, 'Hola como estas'),
-	(11, 'Hola como estas'),
-	(12, 'Hola como estas'),
-	(13, 'Hola como estas'),
-	(14, 'Hola como estas'),
-	(15, 'Hola como estas'),
-	(16, 'Hola como estas');
+-- Volcando datos para la tabla cybercore.estado_pedidos: ~5 rows (aproximadamente)
+REPLACE INTO `estado_pedidos` (`id`, `pedido_id`, `estado`, `codigo_seguimiento`) VALUES
+	(1, 38, 'En proceso de entrega', '113472093914'),
+	(2, 39, 'EN CAMINO', '575757437101'),
+	(3, 40, 'EN CAMINO', '876477576384'),
+	(4, 41, 'ENTREGADO', '926034584180'),
+	(5, 42, 'Preparando pedido', '384689008797'),
+	(6, 43, 'Preparando pedido', '361673534372'),
+	(7, 44, 'EN CAMINO', '959590543320'),
+	(8, 45, 'Preparando pedido', '800798713180');
 
 -- Volcando estructura para tabla cybercore.tb_carrito
 CREATE TABLE IF NOT EXISTS `tb_carrito` (
@@ -85,32 +68,30 @@ REPLACE INTO `tb_carrito` (`id`, `id_pedido`, `producto`, `detalle`, `cantidad`,
 -- Volcando estructura para tabla cybercore.tb_pedidos
 CREATE TABLE IF NOT EXISTS `tb_pedidos` (
   `id_pedido` int NOT NULL AUTO_INCREMENT,
-  `nombre_cliente` varchar(512) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
-  `rut_cliente` varchar(512) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
-  `celular_cliente` varchar(512) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
-  `celular_referencia_cliente` varchar(512) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
-  `email_cliente` varchar(512) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
-  `direccion_cliente` varchar(512) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
-  `id_direccion_cliente` varchar(512) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
-  `costo_pedido` varchar(512) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
-  `costo_delivery` varchar(512) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
+  `nombre_origen` varchar(512) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish_ci DEFAULT NULL,
+  `direccion_origen` varchar(512) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish_ci DEFAULT NULL,
+  `celular_origen` varchar(512) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish_ci DEFAULT NULL,
+  `nombre_destino` varchar(512) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish_ci DEFAULT NULL,
+  `direccion_destino` varchar(512) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish_ci DEFAULT NULL,
+  `celular_destino` varchar(512) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish_ci DEFAULT NULL,
   `obs` varchar(512) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
-  `id_carrito` varchar(512) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
   `id_repartidor_asignado` varchar(512) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
   `estado_pedido` varchar(512) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
-  `estado` varchar(255) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
+  `estado` varchar(50) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
   `tipo_pedido` varchar(255) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id_pedido`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
 
--- Volcando datos para la tabla cybercore.tb_pedidos: ~6 rows (aproximadamente)
-REPLACE INTO `tb_pedidos` (`id_pedido`, `nombre_cliente`, `rut_cliente`, `celular_cliente`, `celular_referencia_cliente`, `email_cliente`, `direccion_cliente`, `id_direccion_cliente`, `costo_pedido`, `costo_delivery`, `obs`, `id_carrito`, `id_repartidor_asignado`, `estado_pedido`, `estado`, `tipo_pedido`) VALUES
-	(4, 'prdrito', '1-921', '940327883', '940327883', 'pedrito@gmail.com', 'isla walton 543', '', '99000', '4990', 'objeto delicado', '1', '44', 'PEDIDO FINALIZADO', '1', NULL),
-	(5, 'matias del rio', '494-2', '940327883', '992939323', 'matiaselmismisimo@gmail.com', 'sucasa 123', '', '464490', '7000', 'arbol fuera de casa', '2', '44', 'PEDIDO FINALIZADO', '1', NULL),
-	(9, 'probando api', '1-9201', '940327883', '940327883', 'benjita@gmail.com', 'calle muy falsa 123', NULL, NULL, '9990', 'que pasopadrino', NULL, NULL, NULL, NULL, NULL),
-	(10, 'probando api2', '1-92013', '940327883', '940327883', 'benjita23@gmail.com', 'calle muy falsa 1233', NULL, '40094', '9990', 'que pasopadrino XDDD', NULL, NULL, NULL, NULL, NULL),
-	(12, 'german toro', '83344-3', '940327883', '940327883', 'guille@gmail.com', 'isla falsa 123', '', '601980', '4500', 'delicado', '3', '45', 'ASIGNADO', '1', NULL),
-	(13, 'Benjamín', '2323232', '940327883', '940327883', 'benjam@gmail.com', 'Isla adelaida 541', '', '600000', '5000', 'ninguna', '4', '44', 'ASIGNADO', '1', NULL);
+-- Volcando datos para la tabla cybercore.tb_pedidos: ~7 rows (aproximadamente)
+REPLACE INTO `tb_pedidos` (`id_pedido`, `nombre_origen`, `direccion_origen`, `celular_origen`, `nombre_destino`, `direccion_destino`, `celular_destino`, `obs`, `id_repartidor_asignado`, `estado_pedido`, `estado`, `tipo_pedido`) VALUES
+	(38, 'prueba api3', 'asdasdasd@gmail.com', '948485884', '1-9', 'isla endpoint', '947584774', 'fasfasf', '45', 'ASIGNADO', '1', 'SUCURSAL'),
+	(39, 'PRUEBA DIFINITIVA CHAVALES', 'asdgfdsagasdg@gmail.com', '948485884', '1-2', 'calla de la prueba', '947584774', 'asdasd', '44', 'PEDIDO TOMADO', '1', 'SUCURSAL'),
+	(40, 'prueba api', 'vsdfsdf@gmail.com', '948485884', '1-9', 'calla de la prueba', '947584774', 'bbodga', '44', 'PEDIDO TOMADO', '1', 'BODEGA'),
+	(41, 'prueba api', 'vsdfsdf@gmail.com', '948485884', '1-9', 'calla de la prueba', '947584774', 'bbodga', '44', 'PEDIDO FINALIZADO', '1', 'BODEGA'),
+	(42, 'prueba api3', 'asdfasdfder2002@gmail.com', '948485884', '1-9', 'calla de la prueba', '947584774', 'sdafasdfsdf', NULL, 'PREPARANDO', '1', 'BODEGA'),
+	(43, 'sfsdf', 'sdfsd', 'fsdfsd', 'fsdf', '343434', '33434', 'sdfsd', NULL, 'PREPARANDO', '1', 'BODEGA'),
+	(44, 'nombre origen', 'direccion origen', '9339485995', 'nom destino', 'direccion ddestino', '938495005', 'comentario', '45', 'PEDIDO TOMADO', '1', 'BODEGA'),
+	(45, 'html', 'con coso', '99293993', 'sfdgsdg', 'destino', '9384784', 'sdfsadf', NULL, 'PREPARANDO', '1', 'BODEGA');
 
 -- Volcando estructura para tabla cybercore.tb_usuarios
 CREATE TABLE IF NOT EXISTS `tb_usuarios` (
@@ -137,7 +118,7 @@ REPLACE INTO `tb_usuarios` (`id`, `nombres`, `ap_paterno`, `ap_materno`, `rut`, 
 	(41, 'Jose', 'Pepe', 'Grillo', '1-3', '1973-06-03', 'HOMBRE', '965849858', NULL, 'elpepe@gmail.com', '123', NULL, 'ADMINISTRADOR', '1'),
 	(44, 'Bastian', 'Landaeta', 'Loyola', '1212121', '1992-03-09', 'HOMBRE', '940327883', NULL, 'prueba1@gmail.com', '123', NULL, 'REPARTIDOR', '1'),
 	(45, 'elpepe', 'profesor', 'decounter', '34949934-2', '1950-04-04', 'MASCULINO', '940327883', NULL, 'elpepe1@gmail.com', '123', NULL, 'REPARTIDOR', '1'),
-	(46, 'Alexander', 'Salazar', 'Loaza', '2100-3', '1973-06-03', 'FEMENINO', '940327883', NULL, 'admin', '123', NULL, 'ADMINISTRADOR', '1');
+	(46, 'Alexander', 'Salazar', 'Loaza', '2100-3', '1973-06-03', 'FEMENINO', '940327883', NULL, 'admin@gmail.com', '123', NULL, 'ADMINISTRADOR', '1');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
