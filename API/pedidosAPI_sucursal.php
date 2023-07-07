@@ -11,7 +11,7 @@ $dbConn = connect($db);
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (isset($_GET['id'])) {
         // Mostrar un pedido específico
-        $sql = $dbConn->prepare("SELECT * FROM tb_pedidos WHERE id_pedido=:id and tipo_pedido='sucursal'");
+        $sql = $dbConn->prepare("SELECT * FROM tb_pedidos WHERE id_pedido=:id and tipo_pedido='SUCURSAL'");
         $sql->bindValue(':id', $_GET['id']);
         $sql->execute();
         $result = $sql->fetch(PDO::FETCH_ASSOC);
@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         exit();
     } else {
         // Mostrar lista de pedidos
-        $sql = $dbConn->prepare("SELECT * FROM tb_pedidos where tipo_pedido='sucursal'");
+        $sql = $dbConn->prepare("SELECT * FROM tb_pedidos where tipo_pedido='SUCURSAL'");
         $sql->execute();
         $results = $sql->fetchAll(PDO::FETCH_ASSOC);
         header("Content-Type: application/json");
@@ -46,59 +46,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $codigoSeguimiento = generarCodigoSeguimiento(12);
 
     // Verificar si los datos del pedido se enviaron correctamente
-    if (isset($_POST['nombre_cliente']) && isset($_POST['rut_cliente']) && isset($_POST['celular_cliente']) && isset($_POST['celular_referencia_cliente']) && isset($_POST['email_cliente']) && isset($_POST['direccion_cliente']) && isset($_POST['costo_pedido']) && isset($_POST['costo_delivery']) && isset($_POST['obs'])) {
+    if (isset($_POST['nombre_origen']) && isset($_POST['direccion_origen']) && isset($_POST['celular_origen']) && isset($_POST['nombre_destino']) && isset($_POST['direccion_destino']) && isset($_POST['celular_destino']) && isset($_POST['obs'])) {
 
         // Obtener los datos del pedido del cuerpo de la solicitud
-        $nombreCliente = $_POST['nombre_cliente'];
-        $rutCliente = $_POST['rut_cliente'];
-        $celularCliente = $_POST['celular_cliente'];
-        $celularReferenciaCliente = $_POST['celular_referencia_cliente'];
-        $emailCliente = $_POST['email_cliente'];
-        $direccionCliente = $_POST['direccion_cliente'];
-        $costoPedido = $_POST['costo_pedido'];
-        $costoDelivery = $_POST['costo_delivery'];
+        $nombreOrigen = $_POST['nombre_origen'];
+        $direccionOrigen = $_POST['direccion_origen'];
+        $celularOrigen = $_POST['celular_origen'];
+        $nombreDestino = $_POST['nombre_destino'];
+        $direccionDestino = $_POST['direccion_destino'];
+        $celularDestino = $_POST['celular_destino'];
         $obs = $_POST['obs'];
 
         // Preparar la consulta SQL para insertar el pedido
         $sql = "INSERT INTO tb_pedidos
-              (nombre_cliente, rut_cliente, celular_cliente, celular_referencia_cliente, email_cliente, direccion_cliente, costo_pedido, costo_delivery, obs, estado_pedido, estado, tipo_pedido)
+              (nombre_origen, direccion_origen, celular_origen, nombre_destino, direccion_destino, celular_destino, obs, estado_pedido, estado, tipo_pedido, codigo_seguimiento)
               VALUES
-              (:nombre_cliente, :rut_cliente, :celular_cliente, :celular_referencia_cliente, :email_cliente, :direccion_cliente, :costo_pedido, :costo_delivery, :obs,'PREPARANDO' , 1, 'SUCURSAL')";
+              (:nombre_origen, :direccion_origen, :celular_origen, :nombre_destino, :direccion_destino, :celular_destino, :obs, 'PREPARANDO', 1, 'SUCURSAL', :codigo_seguimiento)";
         $statement = $dbConn->prepare($sql);
 
         // Vincular los valores a los parámetros de la consulta preparada
-        $statement->bindParam(':nombre_cliente', $nombreCliente);
-        $statement->bindParam(':rut_cliente', $rutCliente);
-        $statement->bindParam(':celular_cliente', $celularCliente);
-        $statement->bindParam(':celular_referencia_cliente', $celularReferenciaCliente);
-        $statement->bindParam(':email_cliente', $emailCliente);
-        $statement->bindParam(':direccion_cliente', $direccionCliente);
-        $statement->bindParam(':costo_pedido', $costoPedido);
-        $statement->bindParam(':costo_delivery', $costoDelivery);
+        $statement->bindParam(':nombre_origen', $nombreOrigen);
+        $statement->bindParam(':direccion_origen', $direccionOrigen);
+        $statement->bindParam(':celular_origen', $celularOrigen);
+        $statement->bindParam(':nombre_destino', $nombreDestino);
+        $statement->bindParam(':direccion_destino', $direccionDestino);
+        $statement->bindParam(':celular_destino', $celularDestino);
         $statement->bindParam(':obs', $obs);
+        $statement->bindParam(':codigo_seguimiento', $codigoSeguimiento);
 
         // Ejecutar la consulta
         if ($statement->execute()) {
             $postId = $dbConn->lastInsertId();
             if ($postId) {
-                // Insertar el código de seguimiento y el estado de delivery en la tabla correspondiente
-                $estadoPedidoSql = "INSERT INTO estado_pedidos (pedido_id, estado, codigo_seguimiento) VALUES (:pedido_id, 'Preparando pedido', :codigo_seguimiento)";
-                $estadoPedidoStatement = $dbConn->prepare($estadoPedidoSql);
-                $estadoPedidoStatement->bindValue(':pedido_id', $postId);
-                $estadoPedidoStatement->bindValue(':codigo_seguimiento', $codigoSeguimiento);
-                $estadoPedidoStatement->execute();
-
                 $response = array(
-                    'id_pedido' => $postId,
-                    'nombre_cliente' => $nombreCliente,
-                    'rut_cliente' => $rutCliente,
-                    'celular_cliente' => $celularCliente,
-                    'celular_referencia_cliente' => $celularReferenciaCliente,
-                    'email_cliente' => $emailCliente,
-                    'direccion_cliente' => $direccionCliente,
-                    'costo_pedido' => $costoPedido,
-                    'costo_delivery' => $costoDelivery,
-                    'obs' => $obs,
+                    'status' => 201,
+                    'message' => 'correcto',
                     'codigo_seguimiento' => $codigoSeguimiento
                 );
 
@@ -111,36 +93,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Si hay algún error en los datos del pedido o en la ejecución de la consulta
     header("HTTP/1.1 400 Bad Request");
-}
-
-
-// Borrar
-if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
-    if (isset($_GET['id'])) {
-        $id = $_GET['id'];
-        $statement = $dbConn->prepare("DELETE FROM tb_pedidos WHERE id_pedido=:id");
-        $statement->bindValue(':id', $id);
-        $statement->execute();
-        header("HTTP/1.1 200 OK");
-        exit();
-    }
-}
-
-// Actualizar
-if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
-    parse_str(file_get_contents("php://input"), $putData);
-    $input = $putData;
-    $postId = $input['id'];
-    $fields = getParams($input);
-
-    $sql = "UPDATE tb_pedidos SET $fields WHERE id_pedido=:id";
-    $statement = $dbConn->prepare($sql);
-    $statement->bindParam(':id', $postId);
-    bindAllValues($statement, $input);
-
-    $statement->execute();
-    header("HTTP/1.1 200 OK");
-    exit();
 }
 
 // En caso de que ninguna de las opciones anteriores se haya ejecutado
