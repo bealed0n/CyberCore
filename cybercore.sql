@@ -28,9 +28,9 @@ CREATE TABLE IF NOT EXISTS `estado_pedidos` (
   PRIMARY KEY (`id`),
   KEY `pedido_id` (`pedido_id`),
   CONSTRAINT `estado_pedidos_ibfk_1` FOREIGN KEY (`pedido_id`) REFERENCES `tb_pedidos` (`id_pedido`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla cybercore.estado_pedidos: ~5 rows (aproximadamente)
+-- Volcando datos para la tabla cybercore.estado_pedidos: ~8 rows (aproximadamente)
 REPLACE INTO `estado_pedidos` (`id`, `pedido_id`, `estado`, `codigo_seguimiento`) VALUES
 	(1, 38, 'En proceso de entrega', '113472093914'),
 	(2, 39, 'EN CAMINO', '575757437101'),
@@ -39,7 +39,8 @@ REPLACE INTO `estado_pedidos` (`id`, `pedido_id`, `estado`, `codigo_seguimiento`
 	(5, 42, 'Preparando pedido', '384689008797'),
 	(6, 43, 'Preparando pedido', '361673534372'),
 	(7, 44, 'EN CAMINO', '959590543320'),
-	(8, 45, 'Preparando pedido', '800798713180');
+	(8, 45, 'Preparando pedido', '800798713180'),
+	(9, 46, 'Preparando pedido', '647623973318');
 
 -- Volcando estructura para tabla cybercore.tb_carrito
 CREATE TABLE IF NOT EXISTS `tb_carrito` (
@@ -79,19 +80,24 @@ CREATE TABLE IF NOT EXISTS `tb_pedidos` (
   `estado_pedido` varchar(512) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
   `estado` varchar(50) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
   `tipo_pedido` varchar(255) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
+  `codigo_seguimiento` varchar(30) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id_pedido`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
 
--- Volcando datos para la tabla cybercore.tb_pedidos: ~7 rows (aproximadamente)
-REPLACE INTO `tb_pedidos` (`id_pedido`, `nombre_origen`, `direccion_origen`, `celular_origen`, `nombre_destino`, `direccion_destino`, `celular_destino`, `obs`, `id_repartidor_asignado`, `estado_pedido`, `estado`, `tipo_pedido`) VALUES
-	(38, 'prueba api3', 'asdasdasd@gmail.com', '948485884', '1-9', 'isla endpoint', '947584774', 'fasfasf', '45', 'ASIGNADO', '1', 'SUCURSAL'),
-	(39, 'PRUEBA DIFINITIVA CHAVALES', 'asdgfdsagasdg@gmail.com', '948485884', '1-2', 'calla de la prueba', '947584774', 'asdasd', '44', 'PEDIDO TOMADO', '1', 'SUCURSAL'),
-	(40, 'prueba api', 'vsdfsdf@gmail.com', '948485884', '1-9', 'calla de la prueba', '947584774', 'bbodga', '44', 'PEDIDO TOMADO', '1', 'BODEGA'),
-	(41, 'prueba api', 'vsdfsdf@gmail.com', '948485884', '1-9', 'calla de la prueba', '947584774', 'bbodga', '44', 'PEDIDO FINALIZADO', '1', 'BODEGA'),
-	(42, 'prueba api3', 'asdfasdfder2002@gmail.com', '948485884', '1-9', 'calla de la prueba', '947584774', 'sdafasdfsdf', NULL, 'PREPARANDO', '1', 'BODEGA'),
-	(43, 'sfsdf', 'sdfsd', 'fsdfsd', 'fsdf', '343434', '33434', 'sdfsd', NULL, 'PREPARANDO', '1', 'BODEGA'),
-	(44, 'nombre origen', 'direccion origen', '9339485995', 'nom destino', 'direccion ddestino', '938495005', 'comentario', '45', 'PEDIDO TOMADO', '1', 'BODEGA'),
-	(45, 'html', 'con coso', '99293993', 'sfdgsdg', 'destino', '9384784', 'sdfsadf', NULL, 'PREPARANDO', '1', 'BODEGA');
+-- Volcando datos para la tabla cybercore.tb_pedidos: ~12 rows (aproximadamente)
+REPLACE INTO `tb_pedidos` (`id_pedido`, `nombre_origen`, `direccion_origen`, `celular_origen`, `nombre_destino`, `direccion_destino`, `celular_destino`, `obs`, `id_repartidor_asignado`, `estado_pedido`, `estado`, `tipo_pedido`, `codigo_seguimiento`) VALUES
+	(38, 'prueba api3', 'asdasdasd@gmail.com', '948485884', '1-9', 'isla endpoint', '947584774', 'fasfasf', '45', 'ASIGNADO', '1', 'SUCURSAL', NULL),
+	(39, 'PRUEBA DIFINITIVA CHAVALES', 'asdgfdsagasdg@gmail.com', '948485884', '1-2', 'calla de la prueba', '947584774', 'asdasd', '44', 'PEDIDO TOMADO', '1', 'SUCURSAL', NULL),
+	(40, 'prueba api', 'vsdfsdf@gmail.com', '948485884', '1-9', 'calla de la prueba', '947584774', 'bbodga', '44', 'PEDIDO TOMADO', '1', 'BODEGA', NULL),
+	(41, 'prueba api', 'vsdfsdf@gmail.com', '948485884', '1-9', 'calla de la prueba', '947584774', 'bbodga', '44', 'PEDIDO FINALIZADO', '1', 'BODEGA', NULL),
+	(42, 'prueba api3', 'asdfasdfder2002@gmail.com', '948485884', '1-9', 'calla de la prueba', '947584774', 'sdafasdfsdf', NULL, 'PREPARANDO', '1', 'BODEGA', NULL),
+	(43, 'sfsdf', 'sdfsd', 'fsdfsd', 'fsdf', '343434', '33434', 'sdfsd', NULL, 'PREPARANDO', '1', 'BODEGA', NULL),
+	(44, 'nombre origen', 'direccion origen', '9339485995', 'nom destino', 'direccion ddestino', '938495005', 'comentario', '45', 'PEDIDO TOMADO', '1', 'BODEGA', NULL),
+	(45, 'html', 'con coso', '99293993', 'sfdgsdg', 'destino', '9384784', 'sdfsadf', NULL, 'PREPARANDO', '1', 'BODEGA', NULL),
+	(46, 'gdfg', 'b', 'c', 'd', '3434', '9384784', 'prueba de otro proyecto', NULL, 'PREPARANDO', '1', 'BODEGA', NULL),
+	(48, 'asdfasdf', 'asdfasdf', '12341234', 'asdfasdf', 'asdfasdf', '12341234', 'fsdafg', NULL, NULL, NULL, 'SUCURSAL', NULL),
+	(49, 'dfsgfsda', 'gfsgfdsg', '231142134', 'dfsgfsda', 'gfsgfdsg', '231142134', 'gfsg', NULL, 'PREPARANDO', '1', 'BODEGA', NULL),
+	(50, 'ggdfsgsd', 'fdsgsfdgsdf', '23423443', 'ggdfsgsd', 'fdsgsfdgsdf', '23423443', 'bbb', NULL, 'PREPARANDO', '1', 'BODEGA', '466142968277255');
 
 -- Volcando estructura para tabla cybercore.tb_usuarios
 CREATE TABLE IF NOT EXISTS `tb_usuarios` (
