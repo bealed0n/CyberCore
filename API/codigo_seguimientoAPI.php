@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (isset($_GET['codigo_seguimiento'])) {
         $codigoSeguimiento = $_GET['codigo_seguimiento'];
 
-        $sql = $dbConn->prepare("SELECT estado FROM tb_pedidos WHERE codigo_seguimiento = :codigo_seguimiento");
+        $sql = $dbConn->prepare("SELECT estado_pedido FROM tb_pedidos WHERE codigo_seguimiento = :codigo_seguimiento");
         $sql->bindParam(':codigo_seguimiento', $codigoSeguimiento);
         $sql->execute();
         $result = $sql->fetch(PDO::FETCH_ASSOC);
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     } elseif (isset($_GET['pedido_id'])) {
         $pedidoId = $_GET['pedido_id'];
 
-        $sql = $dbConn->prepare("SELECT codigo_seguimiento, estado FROM tb_pedidos WHERE id_pedido = :pedido_id");
+        $sql = $dbConn->prepare("SELECT codigo_seguimiento, estado_pedido FROM tb_pedidos WHERE id_pedido = :pedido_id");
         $sql->bindParam(':pedido_id', $pedidoId);
         $sql->execute();
         $result = $sql->fetch(PDO::FETCH_ASSOC);

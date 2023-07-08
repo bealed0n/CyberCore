@@ -19,53 +19,6 @@
 CREATE DATABASE IF NOT EXISTS `cybercore` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `cybercore`;
 
--- Volcando estructura para tabla cybercore.estado_pedidos
-CREATE TABLE IF NOT EXISTS `estado_pedidos` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `pedido_id` int DEFAULT NULL,
-  `estado` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `codigo_seguimiento` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `pedido_id` (`pedido_id`),
-  CONSTRAINT `estado_pedidos_ibfk_1` FOREIGN KEY (`pedido_id`) REFERENCES `tb_pedidos` (`id_pedido`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Volcando datos para la tabla cybercore.estado_pedidos: ~8 rows (aproximadamente)
-REPLACE INTO `estado_pedidos` (`id`, `pedido_id`, `estado`, `codigo_seguimiento`) VALUES
-	(1, 38, 'En proceso de entrega', '113472093914'),
-	(2, 39, 'EN CAMINO', '575757437101'),
-	(3, 40, 'EN CAMINO', '876477576384'),
-	(4, 41, 'ENTREGADO', '926034584180'),
-	(5, 42, 'Preparando pedido', '384689008797'),
-	(6, 43, 'Preparando pedido', '361673534372'),
-	(7, 44, 'EN CAMINO', '959590543320'),
-	(8, 45, 'Preparando pedido', '800798713180'),
-	(9, 46, 'Preparando pedido', '647623973318');
-
--- Volcando estructura para tabla cybercore.tb_carrito
-CREATE TABLE IF NOT EXISTS `tb_carrito` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_pedido` varchar(512) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
-  `producto` varchar(512) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
-  `detalle` varchar(512) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
-  `cantidad` varchar(512) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
-  `precio_unitario` varchar(512) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
-  `precio_total` varchar(512) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
-  `estado` varchar(255) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
-
--- Volcando datos para la tabla cybercore.tb_carrito: ~8 rows (aproximadamente)
-REPLACE INTO `tb_carrito` (`id`, `id_pedido`, `producto`, `detalle`, `cantidad`, `precio_unitario`, `precio_total`, `estado`) VALUES
-	(7, '1', 'Guitarra electrica', '70x40', '1', '99000', '99000', '1'),
-	(8, '2', 'bateria electrica', 'gigante', '1', '444990', '444990', '1'),
-	(9, '2', 'cables xml', 'ninguno', '3', '6500', '19500', '1'),
-	(10, '3', 'dgdf', 'gdfg', '34', '34', '1156', '0'),
-	(11, '3', 'fsdf', 'fsdfsdf', '23', '3233', '74359', '0'),
-	(12, '3', 'dsfsdf', 'sdfsdf', '3434', '3434', '11792356', '0'),
-	(13, '3', 'Mesa de sonido', 'pioner', '2', '300990', '601980', '1'),
-	(14, '4', 'guitarra acustica', 'madera de roble', '1', '600000', '600000', '1');
-
 -- Volcando estructura para tabla cybercore.tb_pedidos
 CREATE TABLE IF NOT EXISTS `tb_pedidos` (
   `id_pedido` int NOT NULL AUTO_INCREMENT,
@@ -82,22 +35,22 @@ CREATE TABLE IF NOT EXISTS `tb_pedidos` (
   `tipo_pedido` varchar(255) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
   `codigo_seguimiento` varchar(30) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id_pedido`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
 
--- Volcando datos para la tabla cybercore.tb_pedidos: ~12 rows (aproximadamente)
+-- Volcando datos para la tabla cybercore.tb_pedidos: ~13 rows (aproximadamente)
 REPLACE INTO `tb_pedidos` (`id_pedido`, `nombre_origen`, `direccion_origen`, `celular_origen`, `nombre_destino`, `direccion_destino`, `celular_destino`, `obs`, `id_repartidor_asignado`, `estado_pedido`, `estado`, `tipo_pedido`, `codigo_seguimiento`) VALUES
-	(38, 'prueba api3', 'asdasdasd@gmail.com', '948485884', '1-9', 'isla endpoint', '947584774', 'fasfasf', '45', 'ASIGNADO', '1', 'SUCURSAL', NULL),
-	(39, 'PRUEBA DIFINITIVA CHAVALES', 'asdgfdsagasdg@gmail.com', '948485884', '1-2', 'calla de la prueba', '947584774', 'asdasd', '44', 'PEDIDO TOMADO', '1', 'SUCURSAL', NULL),
-	(40, 'prueba api', 'vsdfsdf@gmail.com', '948485884', '1-9', 'calla de la prueba', '947584774', 'bbodga', '44', 'PEDIDO TOMADO', '1', 'BODEGA', NULL),
-	(41, 'prueba api', 'vsdfsdf@gmail.com', '948485884', '1-9', 'calla de la prueba', '947584774', 'bbodga', '44', 'PEDIDO FINALIZADO', '1', 'BODEGA', NULL),
-	(42, 'prueba api3', 'asdfasdfder2002@gmail.com', '948485884', '1-9', 'calla de la prueba', '947584774', 'sdafasdfsdf', NULL, 'PREPARANDO', '1', 'BODEGA', NULL),
-	(43, 'sfsdf', 'sdfsd', 'fsdfsd', 'fsdf', '343434', '33434', 'sdfsd', NULL, 'PREPARANDO', '1', 'BODEGA', NULL),
-	(44, 'nombre origen', 'direccion origen', '9339485995', 'nom destino', 'direccion ddestino', '938495005', 'comentario', '45', 'PEDIDO TOMADO', '1', 'BODEGA', NULL),
-	(45, 'html', 'con coso', '99293993', 'sfdgsdg', 'destino', '9384784', 'sdfsadf', NULL, 'PREPARANDO', '1', 'BODEGA', NULL),
-	(46, 'gdfg', 'b', 'c', 'd', '3434', '9384784', 'prueba de otro proyecto', NULL, 'PREPARANDO', '1', 'BODEGA', NULL),
-	(48, 'asdfasdf', 'asdfasdf', '12341234', 'asdfasdf', 'asdfasdf', '12341234', 'fsdafg', NULL, NULL, NULL, 'SUCURSAL', NULL),
-	(49, 'dfsgfsda', 'gfsgfdsg', '231142134', 'dfsgfsda', 'gfsgfdsg', '231142134', 'gfsg', NULL, 'PREPARANDO', '1', 'BODEGA', NULL),
-	(50, 'ggdfsgsd', 'fdsgsfdgsdf', '23423443', 'ggdfsgsd', 'fdsgsfdgsdf', '23423443', 'bbb', NULL, 'PREPARANDO', '1', 'BODEGA', '466142968277255');
+	(52, 'Juan Fernández', 'Calle E 50', '0974207175', 'María Pérez', 'Calle A 92', '0984744448', 'Envío de prueba', NULL, 'PREPARANDO', '1', 'SUCURSAL', '601743412682'),
+	(53, 'Carlos Fernández', 'Calle A 97', '0995852473', 'Laura García', 'Calle C 75', '0949421000', 'Envío de prueba', NULL, 'PREPARANDO', '1', 'SUCURSAL', '206312652271'),
+	(54, 'Pedro García', 'Calle C 35', '0928825467', 'Carlos Fernández', 'Calle C 40', '0943283288', 'Envío de prueba', NULL, 'PREPARANDO', '1', 'SUCURSAL', '790994973083'),
+	(55, 'María López', 'Calle D 30', '0959707320', 'Laura López', 'Calle A 89', '0938017676', 'Envío de prueba', NULL, 'PREPARANDO', '1', 'SUCURSAL', '025892106509'),
+	(56, 'María Pérez', 'Calle E 90', '0954399344', 'Carlos Fernández', 'Calle D 91', '0922565061', 'Envío de prueba', NULL, 'PREPARANDO', '1', 'SUCURSAL', '340725651827'),
+	(57, 'María Gómez', 'Calle C 5', '0906337597', 'Juan Fernández', 'Calle C 21', '0953773704', 'Envío de prueba', NULL, 'PREPARANDO', '1', 'SUCURSAL', '295151790334'),
+	(58, 'María López', 'Calle E 39', '0976454141', 'Pedro Gómez', 'Calle E 26', '0990553080', 'Envío de prueba', NULL, 'PREPARANDO', '1', 'SUCURSAL', '457181269707'),
+	(59, 'Carlos Fernández', 'Calle E 53', '0934479563', 'Pedro López', 'Calle C 37', '0922662589', 'Envío de prueba', NULL, 'PREPARANDO', '1', 'SUCURSAL', '729555976505'),
+	(60, 'María Fernández', 'Calle E 43', '0917638857', 'María Gómez', 'Calle B 83', '0984174076', 'Envío de prueba', NULL, 'PREPARANDO', '1', 'SUCURSAL', '267511474634'),
+	(61, 'Laura Fernández', 'Calle B 20', '0916579779', 'Carlos Gómez', 'Calle C 49', '0927664613', 'Envío de prueba', NULL, 'PREPARANDO', '1', 'SUCURSAL', '228489034963'),
+	(62, 'Laura Fernández', 'Calle E 28', '0993112126', 'Juan García', 'Calle C 31', '0958229460', 'Envío de prueba', NULL, 'PREPARANDO', '1', 'SUCURSAL', '732535100533'),
+	(63, 'Carlos García', 'Calle B 1', '0950013664', 'María Pérez', 'Calle B 15', '0931914985', 'Envío de prueba', NULL, 'PREPARANDO', '1', 'SUCURSAL', '066224329658');
 
 -- Volcando estructura para tabla cybercore.tb_usuarios
 CREATE TABLE IF NOT EXISTS `tb_usuarios` (

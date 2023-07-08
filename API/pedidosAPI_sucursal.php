@@ -11,7 +11,7 @@ $dbConn = connect($db);
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (isset($_GET['id'])) {
         // Mostrar un pedido específico
-        $sql = $dbConn->prepare("SELECT * FROM tb_pedidos WHERE id_pedido=:id and tipo_pedido='SUCURSAL'");
+        $sql = $dbConn->prepare("SELECT * FROM tb_pedidos WHERE id_pedido=:id AND tipo_pedido='SUCURSAL'");
         $sql->bindValue(':id', $_GET['id']);
         $sql->execute();
         $result = $sql->fetch(PDO::FETCH_ASSOC);
@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         exit();
     } else {
         // Mostrar lista de pedidos
-        $sql = $dbConn->prepare("SELECT * FROM tb_pedidos where tipo_pedido='SUCURSAL'");
+        $sql = $dbConn->prepare("SELECT * FROM tb_pedidos WHERE tipo_pedido='SUCURSAL'");
         $sql->execute();
         $results = $sql->fetchAll(PDO::FETCH_ASSOC);
         header("Content-Type: application/json");
