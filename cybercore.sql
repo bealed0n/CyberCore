@@ -50,7 +50,7 @@ REPLACE INTO `tb_pedidos` (`id_pedido`, `nombre_origen`, `direccion_origen`, `ce
 	(60, 'María Fernández', 'Calle E 43', '0917638857', 'María Gómez', 'Calle B 83', '0984174076', 'Envío de prueba', NULL, 'PREPARANDO', '1', 'SUCURSAL', '267511474634'),
 	(61, 'Laura Fernández', 'Calle B 20', '0916579779', 'Carlos Gómez', 'Calle C 49', '0927664613', 'Envío de prueba', NULL, 'PREPARANDO', '1', 'SUCURSAL', '228489034963'),
 	(62, 'Laura Fernández', 'Calle E 28', '0993112126', 'Juan García', 'Calle C 31', '0958229460', 'Envío de prueba', NULL, 'PREPARANDO', '1', 'SUCURSAL', '732535100533'),
-	(63, 'Carlos García', 'Calle B 1', '0950013664', 'María Pérez', 'Calle B 15', '0931914985', 'Envío de prueba', NULL, 'PREPARANDO', '1', 'SUCURSAL', '066224329658');
+	(63, 'Carlos García', 'Calle B 1', '0950013664', 'María Pérez', 'Calle B 15', '0931914985', 'Envío de prueba', '44', 'ASIGNADO', '1', 'SUCURSAL', '066224329658');
 
 -- Volcando estructura para tabla cybercore.tb_usuarios
 CREATE TABLE IF NOT EXISTS `tb_usuarios` (
@@ -73,9 +73,9 @@ CREATE TABLE IF NOT EXISTS `tb_usuarios` (
 
 -- Volcando datos para la tabla cybercore.tb_usuarios: ~5 rows (aproximadamente)
 REPLACE INTO `tb_usuarios` (`id`, `nombres`, `ap_paterno`, `ap_materno`, `rut`, `fecha_nacimiento`, `sexo`, `celular`, `foto_perfil`, `email`, `password`, `token`, `cargo`, `estado`) VALUES
-	(1, 'benja', 'elguru', 'alumnito1', '1-9', '2002-06-03', 'MASCULINO', '940327883', NULL, 'prueba2@duocuc.cl', '123', NULL, 'ADMINISTRADOR', '1'),
-	(41, 'Jose', 'Pepe', 'Grillo', '1-3', '1973-06-03', 'HOMBRE', '965849858', NULL, 'elpepe@gmail.com', '123', NULL, 'ADMINISTRADOR', '1'),
-	(44, 'Bastian', 'Landaeta', 'Loyola', '1212121', '1992-03-09', 'HOMBRE', '940327883', NULL, 'prueba1@gmail.com', '123', NULL, 'REPARTIDOR', '1'),
+	(1, 'benja', 'elguru', 'alumnito1', '1-9', '2002-06-03', 'MASCULINO', '940327883', NULL, 'prueba2@duocuc.cl', '123', NULL, 'ADMINISTRADOR', '0'),
+	(41, 'Jose', 'Pepe', 'Grillo', '1-3', '1973-06-03', 'MASCULINO', '965849858', NULL, 'elpepe@gmail.com', '123', NULL, 'ADMINISTRADOR', '0'),
+	(44, 'Bastian', 'Landaeta', 'Loyola', '1212121', '1992-03-09', 'FEMENINO', '940327883', NULL, 'prueba1@gmail.com', '123', NULL, 'REPARTIDOR', '1'),
 	(45, 'elpepe', 'profesor', 'decounter', '34949934-2', '1950-04-04', 'MASCULINO', '940327883', NULL, 'elpepe1@gmail.com', '123', NULL, 'REPARTIDOR', '1'),
 	(46, 'Alexander', 'Salazar', 'Loaza', '2100-3', '1973-06-03', 'FEMENINO', '940327883', NULL, 'admin@gmail.com', '123', NULL, 'ADMINISTRADOR', '1');
 
