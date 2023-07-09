@@ -30,8 +30,7 @@ include('../../app/config/config.php');
 <div class="login-box">
     <div class="login-logo">
         <center>
-            <!-- <img src="<?php //echo $URL;?>/public/icono.png" width="100px" alt=""><br> -->
-            <img src="https://img.freepik.com/vector-gratis/servicio-entrega-concepto-mascaras_23-2148497067.jpg?w=996&t=st=1668575624~exp=1668576224~hmac=43358c75b8a12fb5e410cc7d4793066906ba59f5fde3259e5504368c8747b714"
+            <img src="https://i.imgur.com/4uwAKk9.png"
                  width="300px" alt=""> <br>
             <b>Delivery </b>
         </center>

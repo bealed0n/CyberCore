@@ -22,15 +22,11 @@ include('../app/config/config.php');
     <link rel="stylesheet" href="<?php echo $URL;?>/app/templeates/AdminLTE-3.0.5/dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    <!-- Site Icons -->
-   <!-- <link rel="shortcut icon" href="<?php //echo $URL;?>/public/favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="<?php //echo $URL;?>/public/apple-touch-icon.png"> -->
 </head>
 <body class="hold-transition login-page" style="background: #ffffff">
 <div class="login-box">
     <div class="login-logo">
        <center>
-          <!-- <img src="<?php //echo $URL;?>/public/icono.png" width="100px" alt=""><br> -->
            <img src="https://i.imgur.com/4uwAKk9.png"
                 width="300px" alt=""> <br>
            <b>Delivery </b>
@@ -59,40 +55,11 @@ include('../app/config/config.php');
                     </div>
                 </div>
                 <div class="row">
-                   <!-- <div class="col-8">
-                        <div class="icheck-primary">
-                            <input type="checkbox" id="remember">
-                            <label for="remember">
-                                Remember Me
-                            </label>
-                        </div>
-                    </div>-->
-                    <!-- /.col -->
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
                     </div>
-                    <!-- /.col -->
                 </div>
             </form>
-
-           <!-- <div class="social-auth-links text-center mb-3">
-                <p>- OR -</p>
-                <a href="#" class="btn btn-block btn-primary">
-                    <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-                </a>
-                <a href="#" class="btn btn-block btn-danger">
-                    <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-                </a>
-            </div>-->
-            <!-- /.social-auth-links -->
-
-          <!--  <p class="mb-1">
-                <a href="forgot-password.html">I forgot my password</a>
-            </p>
-            <p class="mb-0">
-                <a href="register.html" class="text-center">Register a new membership</a>
-            </p>
-            -->
         </div>
         <!-- /.login-card-body -->
     </div>
