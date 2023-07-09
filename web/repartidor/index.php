@@ -17,12 +17,14 @@ if(isset($_SESSION['u_usuario'])) {
         $cargo_s = $usuario['cargo'];
         $foto_perfil_s = $usuario['foto_perfil'];
     }
+    // Variable para la página activa
+    $activePage = 'repartidores';
     ?>
     <!DOCTYPE>
     <html>
     <head>
         <?php include('../../layout/head.php');?>
-        <title>Delivery | CyberCore</title>
+        <title>Transporte | CyberCore</title>
     </head>
     <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">

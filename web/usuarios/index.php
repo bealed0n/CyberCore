@@ -17,6 +17,8 @@ if(isset($_SESSION['u_usuario'])) {
         $cargo_s = $usuario['cargo'];
         $foto_perfil_s = $usuario['foto_perfil'];
     }
+    // Variable para la página activa
+    $activePage = 'usuarios';
     ?>
     <!DOCTYPE html>
     <html>
@@ -90,9 +92,9 @@ if(isset($_SESSION['u_usuario'])) {
                                                    </td>
                                                    <td><?php echo $email;?></td>
                                                    <td>
-                                                       <a href="update?id=<?php echo $id_usuario;?>" class="btn btn-success btn-xs">
+                                                       <a href="update.php?id=<?php echo $id_usuario;?>" class="btn btn-success btn-xs">
                                                            <span class="fa fa-pen"></span> Editar</a>
-                                                       <a href="delete?id=<?php echo $id_usuario;?>" class="btn btn-danger btn-xs">
+                                                       <a href="delete.php?id=<?php echo $id_usuario;?>" class="btn btn-danger btn-xs">
                                                            <span class="fa fa-trash"></span> Borrar</a>
                                                    </td>
                                                </tr>

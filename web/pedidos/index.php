@@ -17,6 +17,8 @@ if(isset($_SESSION['u_usuario'])) {
         $cargo_s = $usuario['cargo'];
         $foto_perfil_s = $usuario['foto_perfil'];
     }
+    // Variable para la página activa
+    $activePage = 'pedidos';
     ?>
     <!DOCTYPE html>
     <html>
@@ -61,7 +63,7 @@ if(isset($_SESSION['u_usuario'])) {
                                     <a href="create.php" class="btn btn-primary"><span class="fa fa-plus"></span> Nuevo Pedido</a>
                                 </div>
                             </div> <!-- /.card-body -->
-                                <h3 class="card-title"><span class="fa fa-store"></span> Lista de Pedidos </h3>
+                                <!-- <h3 class="card-title"><span class="fa fa-store"></span> Lista de Pedidos </h3> -->
                             </div> <!-- /.card-body -->
                             <div class="card-body">
                                 <div class="row">

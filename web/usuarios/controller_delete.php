@@ -5,11 +5,10 @@ include('../../app/config/config.php');
 
 $email = $_GET['email'];
 
-date_default_timezone_set("America/Caracas");
-$fechaHora =date("Y-m-d h:i:s");
+date_default_timezone_set("America/Santiago");
 $estado = '0';
 
-$sentencia = $pdo->prepare("UPDATE tb_usuarios SET estado='$estado', fyh_eliminacion='$fechaHora' WHERE email='$email' ");
+$sentencia = $pdo->prepare("UPDATE tb_usuarios SET estado='$estado' WHERE email='$email' ");
 if($sentencia->execute()){
     header("Location: ".$URL."/web/usuarios/");
 }else{

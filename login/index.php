@@ -31,7 +31,7 @@ include('../app/config/config.php');
     <div class="login-logo">
        <center>
           <!-- <img src="<?php //echo $URL;?>/public/icono.png" width="100px" alt=""><br> -->
-           <img src="https://i.imgur.com/W7lNeMh.png"
+           <img src="https://i.imgur.com/4uwAKk9.png"
                 width="300px" alt=""> <br>
            <b>Delivery </b>
        </center>

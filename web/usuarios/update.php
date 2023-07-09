@@ -16,7 +16,6 @@ if(isset($_SESSION['u_usuario'])) {
         $ap_materno_s= $usuario['ap_materno'];
         $nombres_s = $usuario['nombres'];
         $rut_s = $usuario['rut'];
-        $cargo_s = $usuario['cargo'];
         $foto_perfil_s = $usuario['foto_perfil'];
     }
     ?>
@@ -97,25 +96,19 @@ if(isset($_SESSION['u_usuario'])) {
                                             <div class="form-group">
                                                 <label for="">Sexo</label>
                                                 <?php
-                                                if($sexo == "HOMBRE"){?>
+                                                if($sexo == "MASCULINO"){?>
                                                     <select name="sexo" id="" CLASS="form-control">
                                                         <option value="<?php echo $sexo;?>"><?php echo $sexo;?></option>
-                                                        <option value="MUJER">MUJER</option>
+                                                        <option value="FEMENINO">FEMENINO</option>
                                                     </select>
                                                 <?php } ?>
                                                 <?php
-                                                if($sexo == "MUJER"){?>
+                                                if($sexo == "FEMENINO"){?>
                                                     <select name="sexo" id="" CLASS="form-control">
                                                         <option value="<?php echo $sexo;?>"><?php echo $sexo;?></option>
-                                                        <option value="HOMBRE">HOMBRE</option>
+                                                        <option value="MASCULINO">MASCULINO</option>
                                                     </select>
                                                 <?php } ?>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="">Cargo</label>
-                                                <select name="cargo" id="" CLASS="form-control">
-                                                    <option value="ADMINISTRADOR">ADMINISTRADOR</option>
-                                                </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for="">Password</label>
