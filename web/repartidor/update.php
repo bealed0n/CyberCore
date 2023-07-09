@@ -110,12 +110,6 @@ if(isset($_SESSION['u_usuario'])) {
                                                 <?php } ?>
                                             </div>
                                             <div class="form-group">
-                                                <label for="">Cargo</label>
-                                                <select name="cargo" id="" CLASS="form-control">
-                                                    <option value="REPARTIDOR">REPARTIDOR</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
                                                 <label for="">Correo Electronico</label>
                                                 <input type="email" class="form-control" value="<?php echo $email;?>" disabled>
                                                 <input type="email" name="email" value="<?php echo $email;?>" hidden>
