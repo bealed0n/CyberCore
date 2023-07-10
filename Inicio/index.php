@@ -10,6 +10,7 @@ include('../app/config/config.php');
     <link rel="icon" href="<?php echo $URL; ?>/public/favicon.ico" type="image/x-icon">
     <title>Transportes CYBERCORE</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <header>
