@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `tb_pedidos` (
   `tipo_pedido` varchar(255) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
   `codigo_seguimiento` varchar(30) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id_pedido`)
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
 
 -- Volcando datos para la tabla cybercore.tb_pedidos: ~13 rows (aproximadamente)
 REPLACE INTO `tb_pedidos` (`id_pedido`, `nombre_origen`, `direccion_origen`, `celular_origen`, `nombre_destino`, `direccion_destino`, `celular_destino`, `obs`, `id_repartidor_asignado`, `estado_pedido`, `estado`, `tipo_pedido`, `codigo_seguimiento`) VALUES
@@ -50,7 +50,8 @@ REPLACE INTO `tb_pedidos` (`id_pedido`, `nombre_origen`, `direccion_origen`, `ce
 	(60, 'María Fernández', 'Calle E 43', '0917638857', 'María Gómez', 'Calle B 83', '0984174076', 'Envío de prueba', NULL, 'PREPARANDO', '1', 'SUCURSAL', '267511474634'),
 	(61, 'Laura Fernández', 'Calle B 20', '0916579779', 'Carlos Gómez', 'Calle C 49', '0927664613', 'Envío de prueba', NULL, 'PREPARANDO', '1', 'SUCURSAL', '228489034963'),
 	(62, 'Laura Fernández', 'Calle E 28', '0993112126', 'Juan García', 'Calle C 31', '0958229460', 'Envío de prueba', NULL, 'PREPARANDO', '1', 'SUCURSAL', '732535100533'),
-	(63, 'Carlos García', 'Calle B 1', '0950013664', 'María Pérez', 'Calle B 15', '0931914985', 'Envío de prueba', '44', 'ASIGNADO', '1', 'SUCURSAL', '066224329658');
+	(63, 'Carlos García', 'Calle B 1', '0950013664', 'María Pérez', 'Calle B 15', '0931914985', 'Envío de prueba', '44', 'PEDIDO FINALIZADO', '1', 'SUCURSAL', '066224329658'),
+	(64, 'Juan García', 'Calle E 20', '0973931005', 'Pedro Fernández', 'Calle B 72', '0962840543', 'Envío de prueba', '44', 'PEDIDO TOMADO', '1', 'SUCURSAL', '401884604306');
 
 -- Volcando estructura para tabla cybercore.tb_usuarios
 CREATE TABLE IF NOT EXISTS `tb_usuarios` (
@@ -69,15 +70,19 @@ CREATE TABLE IF NOT EXISTS `tb_usuarios` (
   `cargo` varchar(512) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `estado` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla cybercore.tb_usuarios: ~5 rows (aproximadamente)
+-- Volcando datos para la tabla cybercore.tb_usuarios: ~6 rows (aproximadamente)
 REPLACE INTO `tb_usuarios` (`id`, `nombres`, `ap_paterno`, `ap_materno`, `rut`, `fecha_nacimiento`, `sexo`, `celular`, `foto_perfil`, `email`, `password`, `token`, `cargo`, `estado`) VALUES
 	(1, 'benja', 'elguru', 'alumnito1', '1-9', '2002-06-03', 'MASCULINO', '940327883', NULL, 'prueba2@duocuc.cl', '123', NULL, 'ADMINISTRADOR', '0'),
 	(41, 'Jose', 'Pepe', 'Grillo', '1-3', '1973-06-03', 'MASCULINO', '965849858', NULL, 'elpepe@gmail.com', '123', NULL, 'ADMINISTRADOR', '0'),
 	(44, 'Bastian', 'Landaeta', 'Loyola', '1212121', '1992-03-09', 'FEMENINO', '940327883', NULL, 'prueba1@gmail.com', '123', NULL, 'REPARTIDOR', '1'),
 	(45, 'elpepe', 'profesor', 'decounter', '34949934-2', '1950-04-04', 'MASCULINO', '940327883', NULL, 'elpepe1@gmail.com', '123', NULL, 'REPARTIDOR', '1'),
-	(46, 'Alexander', 'Salazar', 'Loaza', '2100-3', '1973-06-03', 'FEMENINO', '940327883', NULL, 'admin@gmail.com', '123', NULL, 'ADMINISTRADOR', '1');
+	(46, 'Alexander', 'Salazar', 'Loaz', '2100-3', '1973-06-03', 'FEMENINO', '940327883', NULL, 'admin@gmail.com', '123', NULL, 'ADMINISTRADOR', '1'),
+	(47, 'asdasd', 'asdasd', 'asdasd', '232', '1992-12-12', 'MASCULINO', '940327883', NULL, 'asd@gmail.com', '123', NULL, 'ADMINISTRADOR', '0'),
+	(48, 'sadfasd', 'sdafasdf', 'sadggsda', '121', '2023-07-09', 'MASCULINO', '2343434', NULL, 'wdfsad@gmail.com', '123', NULL, 'ADMINISTRADOR', '0'),
+	(49, 'fdsfsad', 'asdasd', 'sdafasd', '21211', '2023-07-13', 'FEMENINO', '4234234', NULL, 'sdhjfjsadn@gmail.com', '123', NULL, 'ADMINISTRADOR', '0'),
+	(50, 'sdfgsdfg', 'dsfgdsf', 'sdfgsdfg', '2323', '2023-08-05', 'MASCULINO', '4234235', NULL, 'hsdjfsd@gmail.com', '123', NULL, 'REPARTIDOR', '0');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
