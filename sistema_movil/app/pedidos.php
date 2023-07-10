@@ -36,11 +36,11 @@ if(isset($_SESSION['u_usuario'])) {
     <div class="container">
         <table class="table table-bordered table-sm">
             <tr>
-                <td style="background:red"><b style="color: #fff;">Usuario: </b></td>
+                <td style="background:gray"><b style="color: #fff;">Usuario: </b></td>
                 <td><?php echo $nombres_s." ".$ap_paterno_s." ".$ap_materno_s;?></td>
             </tr>
             <tr>
-                <td style="background: red"><b style="color: #fff;">Cargo: </b></td>
+                <td style="background: gray"><b style="color: #fff;">Cargo: </b></td>
                 <td><?php echo $cargo_s;?></td>
             </tr>
         </table>
@@ -54,11 +54,12 @@ if(isset($_SESSION['u_usuario'])) {
             $pedidos = $query_pedidos->fetchAll(PDO::FETCH_ASSOC);
             foreach ($pedidos as $pedido) {
                 $id_pedidos = $pedido['id_pedido'];
-                $cliente = $pedido['nombre_origen'];
-                $rut_cliente = $pedido['direccion_origen'];
-                $celular_cliente = $pedido['celular_origen'];
-                $celular_referencia_cliente = $pedido['celular_destino'];
-                $direccion_cliente = $pedido['direccion_destino'];
+                $nombre_origen = $pedido['nombre_origen'];
+                $direccion_origen = $pedido['direccion_origen'];
+                $celular_origen = $pedido['celular_origen'];
+                $nombre_destino= $pedido['nombre_destino'];
+                $celular_destino = $pedido['celular_destino'];
+                $direccion_destino = $pedido['direccion_destino'];
                 $id_repartidor_asignado = $pedido['id_repartidor_asignado'];
                 $estado_pedido = $pedido['estado_pedido'];
 
@@ -67,7 +68,7 @@ if(isset($_SESSION['u_usuario'])) {
                 }else{
                     ?>
                     <div class="info-box">
-                        <span class="info-box-icon bg-danger"><i class="fa fa-shopping-cart"></i></span>
+                        <span class="info-box-icon bg-secondary"><i class="fa fa-shopping-cart"></i></span>
                         <div class="info-box-content">
                             <span class="info-box-text"><h4><b>Pedido Nuevo - Orden # <?php echo $id_pedidos;?></b></h4></span>
 
@@ -85,7 +86,7 @@ if(isset($_SESSION['u_usuario'])) {
                             <?php
                             if($estado_pedido == "PEDIDO TOMADO"){ ?>
                                 <span class="info-box-text text-right" style="margin-top: -10px">
-                                   <button class="btn btn-danger btn-xs">
+                                   <button class="btn btn-secondary btn-xs">
                                         <i class="fa fa-check-circle"></i>  PEDIDO TOMADO
                                    </button>
                                </span>
@@ -93,30 +94,40 @@ if(isset($_SESSION['u_usuario'])) {
                             }
                             ?>
 
-
+                            <span class="info-box-text">
+                             <i class="fa fa-truck"></i>
+                                Origen:
+                           </span>
                             <span class="info-box-text">
                              <i class="fas fa-user"></i>
-                                <?php echo $cliente;?>
+                                <?php echo $nombre_origen;?>
                            </span>
-                            <br>
                             <p align="justify">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <?php echo $rut_cliente;?>
+                                <?php echo $direccion_origen;?>
                             </p>
+                            <span class="info-box-text">
+                             <i class="fa fa-truck"></i>
+                                Destino:
+                           </span>
+                            <span class="info-box-text">
+                             <i class="fas fa-user"></i>
+                                <?php echo $nombre_destino;?>
+                           </span>
                             <p align="justify">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <?php echo $direccion_cliente;?>
+                                <?php echo $direccion_destino;?>
                             </p>
 
                             <span class="info-box-text">
-                               <a href="<?php echo "https://api.whatsapp.com/send?phone=56".$celular_cliente."&text=Hola";?>"
+                               <a href="<?php echo "https://api.whatsapp.com/send?phone=56".$celular_origen."&text=Hola";?>"
                                   class="btn btn-success btn-xs">
-                               <i class="fab fa-whatsapp"></i> <?php echo $celular_cliente;?>
+                               <i class="fab fa-whatsapp"></i> <?php echo $celular_origen;?>
                                <?php echo "Origen"?>
                                </a>
-                               <a href="<?php echo "https://api.whatsapp.com/send?phone=56".$celular_referencia_cliente."&text=Hola";?>"
+                               <a href="<?php echo "https://api.whatsapp.com/send?phone=56".$celular_destino."&text=Hola";?>"
                                   class="btn btn-success btn-xs" title="Destinatario">
-                               <i class="fab fa-whatsapp"></i> <?php echo $celular_referencia_cliente;?>
+                               <i class="fab fa-whatsapp"></i> <?php echo $celular_destino;?>
                                <?php echo "Destinatario"?>
                                </a>
                            </span>
@@ -145,45 +156,64 @@ if(isset($_SESSION['u_usuario'])) {
         <hr>
         <h4>Listado de pedidos - Finalizados</h4>
         <hr>
-        <div class="row" style="background: #c0c0c0">
+        <div class="row" style="background: #fff">
             <?php
             $query_pedidos_f = $pdo->prepare("SELECT * FROM tb_pedidos WHERE id_repartidor_asignado = '$id_usuario_s' AND estado_pedido = 'PEDIDO FINALIZADO' AND estado ='1' ORDER BY id_pedido DESC ");
             $query_pedidos_f->execute();
             $pedidos_f = $query_pedidos_f->fetchAll(PDO::FETCH_ASSOC);
             foreach ($pedidos_f as $pedido_f) {
                 $id_pedidos = $pedido_f['id_pedido'];
-                $cliente = $pedido_f['nombre_cliente'];
-                $rut_cliente = $pedido_f['rut_cliente'];
-                $celular_cliente = $pedido_f['celular_cliente'];
-                $celular_referencia_cliente = $pedido_f['celular_referencia_cliente'];
-                $direccion_cliente = $pedido_f['direccion_cliente'];
+                $nombre_origen = $pedido_f['nombre_origen'];
+                $direccion_origen = $pedido_f['direccion_origen'];
+                $celular_origen = $pedido_f['celular_origen'];
+                $nombre_destino = $pedido_f['nombre_destino'];
+                $celular_destino = $pedido_f['celular_destino'];
+                $direccion_destino = $pedido_f['direccion_destino'];
                 $id_repartidor_asignado = $pedido_f['id_repartidor_asignado'];
                 $estado_pedido = $pedido_f['estado_pedido'];
                 ?>
-                <div class="info-box" style="background: #c0c0c0">
-                    <span class="info-box-icon bg-danger"><i class="fa fa-shopping-cart"></i></span>
+                <div class="info-box" style="background: #d9d9d9">
+                    <span class="info-box-icon bg-secondary"><i class="fa fa-shopping-cart"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text"><h4><b>Pedido Finalizado - Orden # <?php echo $id_pedidos;?></b></h4></span>
 
-
+                        <span class="info-box-text">
+                             <i class="fa fa-truck"></i>
+                                Origen:
+                        </span>
                         <span class="info-box-text">
                              <i class="fas fa-user"></i>
-                            <?php echo $cliente;?>
+                            <?php echo $nombre_origen;?>
                            </span>
 
                         <p align="justify">
                             <i class="fas fa-map-marker-alt"></i>
-                            <?php echo $direccion_cliente;?>
+                            <?php echo $direccion_origen;?>
+                        </p>
+                        <span class="info-box-text">
+                             <i class="fa fa-truck"></i>
+                                Destino:
+                        </span>
+                        <span class="info-box-text">
+                             <i class="fas fa-user"></i>
+                            <?php echo $nombre_destino;?>
+                           </span>
+
+                        <p align="justify">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <?php echo $direccion_destino;?>
                         </p>
 
                         <span class="info-box-text">
-                               <a href="<?php echo "https://api.whatsapp.com/send?phone=56".$celular_cliente."&text=Hola";?>"
+                               <a href="<?php echo "https://api.whatsapp.com/send?phone=56".$celular_origen."&text=Hola";?>"
                                   class="btn btn-success btn-xs">
-                               <i class="fab fa-whatsapp"></i> <?php echo $celular_cliente;?>
+                               <i class="fab fa-whatsapp"></i> <?php echo $celular_origen;?>
+                               <?php echo "Origen"?>
                                </a>
-                               <a href="<?php echo "https://api.whatsapp.com/send?phone=56".$celular_referencia_cliente."&text=Hola";?>"
+                               <a href="<?php echo "https://api.whatsapp.com/send?phone=56".$celular_destino."&text=Hola";?>"
                                   class="btn btn-success btn-xs">
-                               <i class="fab fa-whatsapp"></i> <?php echo $celular_referencia_cliente;?>
+                               <i class="fab fa-whatsapp"></i> <?php echo $celular_destino;?>
+                               <?php echo "Destinatario"?>
                                </a>
                            </span>
 

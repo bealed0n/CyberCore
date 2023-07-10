@@ -13,10 +13,7 @@
  $sentencia->bindParam(':estado_pedido', $estado_pedido);
  $sentencia->bindParam(':id_pedido', $id_pedido);
  
- $sentencia2 = $pdo->prepare("UPDATE estado_pedidos SET estado = 'EN CAMINO' WHERE pedido_id = :id_pedido");
- $sentencia2->bindParam(':id_pedido', $id_pedido);
- 
- if ($sentencia->execute() && $sentencia2->execute()) {
+ if ($sentencia->execute()) {
      header("Location: http://localhost/cybercore/sistema_movil/app/pedidos.php");
      exit();
  } else {
