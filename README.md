@@ -19,7 +19,7 @@ git clone https://github.com/bealed0n/CyberCore.git
 
 # Documentación de la API
 
-¡Bienvenido al proyecto! Esta documentación te guiará sobre cómo utilizar la API de forma adecuada.
+Esta documentación te guiará sobre cómo utilizar la API de forma adecuada.
 
 ## ¿Cómo usar la API?
 
