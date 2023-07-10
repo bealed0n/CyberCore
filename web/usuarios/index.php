@@ -24,7 +24,7 @@ if(isset($_SESSION['u_usuario'])) {
     <html>
     <head>
         <?php include('../../layout/head.php');?>
-        <title>Delivery</title>
+        <title>Transporte | CyberCore</title>
     </head>
     <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -41,7 +41,7 @@ if(isset($_SESSION['u_usuario'])) {
                             <div class="card-header">
                                 <h3 class="card-title"><span class="fa fa-users"></span> Listado de Usuarios</h3>
                                 <div style="float:right;">
-                                    <a href="create" class="btn btn-info pull-right"> <span class="fa fa-plus"></span> Nuevo usuario</a>
+                                    <a href="create.php" class="btn btn-info pull-right"> <span class="fa fa-plus"></span> Nuevo usuario</a>
                                 </div>
                             </div> <!-- /.card-body -->
                             <div class="card-body">

@@ -41,7 +41,7 @@ if(isset($_SESSION['u_usuario'])) {
         <!-- Google Font: Source Sans Pro -->
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-        <title>Delivery</title>
+        <title>Transporte | CyberCore</title>
     </head>
     <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -147,6 +147,7 @@ if(isset($_SESSION['u_usuario'])) {
                                                                                                     <th style=""><b>Celular destinatario</b></th>
                                                                                                     <th style=""><b>Tipo de pedido</b></th>
                                                                                                     <th style=""><b>Observación</b></th>
+                                                                                                    <th style=""><b>Codigo de seguimiento</b></th>
                                                                                                 </tr>
                                                                                                 </thead>
                                                                                                 <tbody>
@@ -166,6 +167,7 @@ if(isset($_SESSION['u_usuario'])) {
                                                                                                     $costo_pedido_p = $pedido2['celular_destino'];
                                                                                                     $costo_delivery_p = $pedido2['tipo_pedido'];
                                                                                                     $obs_p = $pedido2['obs'];
+                                                                                                    $codigo_seguimiento_p = $pedido2['codigo_seguimiento'];
                                                                                                     // $id_carrito_p = $pedido2['id_carrito'];
                                                                                                     ?>
                                                                                                     <tr>
@@ -181,20 +183,12 @@ if(isset($_SESSION['u_usuario'])) {
                                                                                                         <td><center><?php echo $costo_pedido_p;?></center></td>
                                                                                                         <td><center><?php echo $costo_delivery_p;?></center></td>
                                                                                                         <td><?php echo $obs_p;?></td>
+                                                                                                        <td><?php echo $codigo_seguimiento_p;?></td>
                                                                                                     </tr>
                                                                                                     <?php
                                                                                                 }
                                                                                                 ?>
                                                                                                 </tbody>
-                                                                                                <!-- <tfoot>
-                                                                                                     <tr>
-                                                                                                         <th>Rendering engine</th>
-                                                                                                         <th>Browser</th>
-                                                                                                         <th>Platform(s)</th>
-                                                                                                         <th>Engine version</th>
-                                                                                                         <th>CSS grade</th>
-                                                                                                     </tr>
-                                                                                                 </tfoot>-->
                                                                                             </table>
                                                                                         </div>
                                                                                     </div>
@@ -324,15 +318,6 @@ if(isset($_SESSION['u_usuario'])) {
                                             }
                                             ?>
                                             </tbody>
-                                            <!-- <tfoot>
-                                                 <tr>
-                                                     <th>Rendering engine</th>
-                                                     <th>Browser</th>
-                                                     <th>Platform(s)</th>
-                                                     <th>Engine version</th>
-                                                     <th>CSS grade</th>
-                                                 </tr>
-                                             </tfoot>-->
                                         </table>
 
                                     </div>
@@ -413,15 +398,6 @@ if(isset($_SESSION['u_usuario'])) {
                                             }
                                             ?>
                                             </tbody>
-                                            <!-- <tfoot>
-                                                 <tr>
-                                                     <th>Rendering engine</th>
-                                                     <th>Browser</th>
-                                                     <th>Platform(s)</th>
-                                                     <th>Engine version</th>
-                                                     <th>CSS grade</th>
-                                                 </tr>
-                                             </tfoot>-->
                                         </table>
 
                                     </div>

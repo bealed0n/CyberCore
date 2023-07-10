@@ -19,7 +19,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="<?php echo $URL; ?>" class="brand-link">
+    <a href="<?php echo $URL; ?>/web/" class="brand-link">
         <img src="https://i.imgur.com/4uwAKk9.png" alt="Logo" class="brand-image img-circle elevation-3">
         <span class="brand-text font-weight-light">Transporte</span>
     </a>

@@ -15,12 +15,10 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 $cargo = $_POST['cargo'];
 
-date_default_timezone_set("America/Caracas");
-$fechaHora =date("Y-m-d h:i:s");
+date_default_timezone_set("America/Santiago");
+
 $estado = "1";
 
-$latitud = '0';
-$longitud = '0';
 $estado_delivery = 'LIBRE';
 $nombre_completo = $nombres." ".$ap_paterno." ".$ap_materno;
 
@@ -37,8 +35,8 @@ if(  (($email)==($email_tabla))  ){
 }else{
    //echo "usuario nuevo listo para trabajar";
     $sentencia = $pdo->prepare("INSERT INTO tb_usuarios 
-      ( nombres, ap_paterno, ap_materno, rut, fecha_nacimiento, sexo, celular, email, password, cargo, fyh_creacion, estado) 
-VALUES(:nombres,:ap_paterno,:ap_materno,:rut,:fecha_nacimiento,:sexo,:celular,:email,:password,:cargo,:fyh_creacion,:estado)");
+      ( nombres, ap_paterno, ap_materno, rut, fecha_nacimiento, sexo, celular, email, password, cargo, estado) 
+VALUES(:nombres,:ap_paterno,:ap_materno,:rut,:fecha_nacimiento,:sexo,:celular,:email,:password,:cargo,:estado)");
 
     $sentencia->bindParam(':nombres',$nombres);
     $sentencia->bindParam(':ap_paterno',$ap_paterno);
@@ -50,32 +48,11 @@ VALUES(:nombres,:ap_paterno,:ap_materno,:rut,:fecha_nacimiento,:sexo,:celular,:e
     $sentencia->bindParam(':email',$email);
     $sentencia->bindParam(':password',$password);
     $sentencia->bindParam(':cargo',$cargo);
-
-    $sentencia->bindParam(':fyh_creacion',$fechaHora);
     $sentencia->bindParam(':estado',$estado);
 
     if($sentencia->execute()){
-
-        $sentencia2 = $pdo->prepare("INSERT INTO tb_ubicacion 
-      ( email, latitud, longitud, estado_delivery, cargo, nombre, fyh_creacion, estado) 
-VALUES(:email,:latitud,:longitud,:estado_delivery,:cargo,:nombre,:fyh_creacion,:estado)");
-
-        $sentencia2->bindParam(':email',$email);
-        $sentencia2->bindParam(':latitud',$latitud);
-        $sentencia2->bindParam(':longitud',$longitud);
-        $sentencia2->bindParam(':estado_delivery',$estado_delivery);
-        $sentencia2->bindParam(':cargo',$cargo);
-        $sentencia2->bindParam(':nombre',$nombre_completo);
-
-        $sentencia2->bindParam(':fyh_creacion',$fechaHora);
-        $sentencia2->bindParam(':estado',$estado);
-        if($sentencia2->execute()){
-            header("Location:".$URL."/web/repartidor");
-            // echo "se registro correctamente a la base de datos";
-        }else{
-            echo "No se pudo registrar en ubiciones";
-        }
-
+        header("Location:".$URL."/web/repartidor");
+        echo "se registro correctamente a la base de datos";
     }else{
         echo "No se pudo registrar";
     }

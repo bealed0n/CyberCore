@@ -17,6 +17,7 @@ if(isset($_SESSION['u_usuario'])) {
         $cargo_s = $usuario['cargo'];
         $foto_perfil_s = $usuario['foto_perfil'];
     }
+    $activePage = 'repartidores';
     ?>
     <!DOCTYPE html>
     <html>

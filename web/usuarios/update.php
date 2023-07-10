@@ -16,14 +16,16 @@ if(isset($_SESSION['u_usuario'])) {
         $ap_materno_s= $usuario['ap_materno'];
         $nombres_s = $usuario['nombres'];
         $rut_s = $usuario['rut'];
+        $cargo_s = $usuario['cargo'];
         $foto_perfil_s = $usuario['foto_perfil'];
     }
+    $activePage = 'usuarios';
     ?>
     <!DOCTYPE html>
     <html>
     <head>
         <?php include('../../layout/head.php');?>
-        <title>Delivery</title>
+        <title>Transporte | CyberCore</title>
     </head>
     <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">

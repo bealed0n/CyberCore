@@ -13,10 +13,9 @@ $celular = $_POST['celular'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-date_default_timezone_set("America/Caracas");
-$fechaHora =date("Y-m-d h:i:s");
+date_default_timezone_set("America/Santiago");
 
-$sentencia = $pdo->prepare("UPDATE tb_usuarios SET nombres='$nombres',ap_paterno='$ap_paterno',ap_materno='$ap_materno',rut='$rut',fecha_nacimiento='$fecha_nacimiento',sexo='$sexo',celular='$celular',password='$password', fyh_actualizacion='$fechaHora' WHERE email='$email' ");
+$sentencia = $pdo->prepare("UPDATE tb_usuarios SET nombres='$nombres',ap_paterno='$ap_paterno',ap_materno='$ap_materno',rut='$rut',fecha_nacimiento='$fecha_nacimiento',sexo='$sexo',celular='$celular',password='$password' WHERE email='$email' ");
 //print_r($sentencia);
 if($sentencia->execute()){
     header("Location: ".$URL."/web/usuarios/");

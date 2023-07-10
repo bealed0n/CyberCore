@@ -26,8 +26,8 @@ if (isset($_POST['nombreOrigen']) && isset($_POST['direccionOrigen']) && isset($
         die("Error de conexión a la base de datos: " . $conn->connect_error);
     }
 
-    // Generar un código de seguimiento aleatorio de 15 caracteres numéricos
-    $codigoSeguimiento = generateRandomNumericCode(15);
+    // Generar un código de seguimiento aleatorio de 12 caracteres numéricos
+    $codigoSeguimiento = generateRandomNumericCode(12);
 
     // Preparar la consulta SQL para insertar los datos en la tabla correspondiente
     $sql = "INSERT INTO tb_pedidos (nombre_origen, direccion_origen, celular_origen, nombre_destino, direccion_destino, celular_destino, tipo_pedido, obs, estado_pedido, estado, codigo_seguimiento) 

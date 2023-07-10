@@ -18,6 +18,7 @@ if (isset($_SESSION['u_usuario'])) {
         $cargo_s = $usuario['cargo'];
         $foto_perfil_s = $usuario['foto_perfil'];
     }
+    $activePage = 'pedidos';
     ?>
     <!DOCTYPE html>
     <html>
@@ -39,7 +40,7 @@ if (isset($_SESSION['u_usuario'])) {
         <link rel="stylesheet" href="<?php echo $URL; ?>/app/templeates/AdminLTE-3.0.5/dist/css/adminlte.min.css">
         <!-- Google Font: Source Sans Pro -->
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-        <title>Delivery</title>
+        <title>Transporte | CyberCore</title>
     </head>
     <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -87,10 +88,10 @@ if (isset($_SESSION['u_usuario'])) {
                                                     </thead>
                                                     <tbody>
                                                     <tr>
-                                                        <td><input type="text" class="form-control" id="nombre_p_2"></td>
-                                                        <td><input type="text" class="form-control" id="rut_p_2"></td>
-                                                        <td><input type="text" class="form-control" id="celular_p_2"></td>
-                                                        <td colspan="2"><input type="text" class="form-control" id="email_p_2"></td>
+                                                        <td><input type="text" class="form-control" id="nombre_origen_2"></td>
+                                                        <td><input type="text" class="form-control" id="direccion_origen_2"></td>
+                                                        <td><input type="text" class="form-control" id="celular_origen_2"></td>
+                                                        <td colspan="2"><input type="text" class="form-control" id="nombre_destino"></td>
                                                     </tr>
                                                     <tr>
                                                         <th style="background: #c0c0c0" colspan="2">Dirección destinatario </th>
@@ -100,16 +101,17 @@ if (isset($_SESSION['u_usuario'])) {
                                                     </tr>
                                                     <tr>
                                                         <td colspan="2">
-                                                            <input type="text" id="direccion_p_2" class="form-control">
+                                                            <input type="text" id="direccion_destinatario" class="form-control">
                                                             <input type="text" id="id_direccion_p_2" hidden>
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control" id="nro_referencia">
+                                                            <input type="text" class="form-control" id="celular_destino">
                                                         </td>
                                                         <td>
                                                             <select class="form-control" id="tipo_pedido">
                                                                 <option value="SUCURSAL">SUCURSAL</option>
                                                                 <option value="BODEGA">BODEGA</option>
+                                                                <option value="INTERNO">INTERNO</option>
                                                             </select>
                                                         </td>
                                                         <td>
@@ -127,6 +129,9 @@ if (isset($_SESSION['u_usuario'])) {
                         <button class="btn btn-primary btn-lg" id="btn_registrar_pedido" onclick="registrarPedido()">
                             Registrar Pedido
                         </button>
+                        <!-- create button for clean forms -->
+                        <button class="btn btn-danger btn-lg" onclick="resetForm()">
+                            Limpiar Formulario
 
                     </div>
                 </div><!-- /.container-fluid -->
@@ -153,12 +158,12 @@ if (isset($_SESSION['u_usuario'])) {
     <!-- page script -->
     <script>
         function registrarPedido() {
-            var nombreOrigen = document.getElementById('nombre_p_2').value;
-            var direccionOrigen = document.getElementById('direccion_p_2').value;
-            var celularOrigen = document.getElementById('celular_p_2').value;
-            var nombreDestino = document.getElementById('nombre_p_2').value;
-            var direccionDestino = document.getElementById('direccion_p_2').value;
-            var celularDestino = document.getElementById('celular_p_2').value;
+            var nombreOrigen = document.getElementById('nombre_origen_2').value;
+            var direccionOrigen = document.getElementById('direccion_origen_2').value;
+            var celularOrigen = document.getElementById('celular_origen_2').value;
+            var nombreDestino = document.getElementById('nombre_destino').value;
+            var direccionDestino = document.getElementById('direccion_destinatario').value;
+            var celularDestino = document.getElementById('celular_destino').value;
             var tipoPedido = document.getElementById('tipo_pedido').value;
             var obs = document.getElementById('obs').value;
 
@@ -171,13 +176,7 @@ if (isset($_SESSION['u_usuario'])) {
                         // Respuesta del servidor
                         alert('El pedido se ha registrado exitosamente.');
                         // Limpiar los campos del formulario
-                        document.getElementById('nombre_p_2').value = '';
-                        document.getElementById('direccion_p_2').value = '';
-                        document.getElementById('celular_p_2').value = '';
-                        document.getElementById('nombre_p_2').value = '';
-                        document.getElementById('direccion_p_2').value = '';
-                        document.getElementById('celular_p_2').value = '';
-                        document.getElementById('obs').value = '';
+                        resetForm()
                     }
                 };
                 xhttp.open("POST", "<?php echo $URL; ?>/web/pedidos/guardar_pedido.php", true);
@@ -186,6 +185,16 @@ if (isset($_SESSION['u_usuario'])) {
             } else {
                 alert('Por favor, complete todos los campos obligatorios.');
             }
+        }
+        //Funcion que permite limpiar los campos del formulario
+        function resetForm() {
+            document.getElementById('nombre_origen_2').value = '';
+            document.getElementById('direccion_origen_2').value = '';
+            document.getElementById('celular_origen_2').value = '';
+            document.getElementById('nombre_destino').value = '';
+            document.getElementById('direccion_destinatario').value = '';
+            document.getElementById('celular_destino').value = '';
+            document.getElementById('obs').value = '';
         }
     </script>
     </body>

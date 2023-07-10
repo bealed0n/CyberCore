@@ -141,17 +141,10 @@ if(isset($_SESSION['u_usuario'])) {
                     </div>
                     <?php
                 }
-
-
-
             }
             ?>
 
-
-
         </div>
-
-
         <br>
         <hr>
         <h4>Listado de pedidos - Finalizados</h4>
