@@ -16,6 +16,7 @@ git clone https://github.com/bealed0n/CyberCore.git
 3. Importa el archivo de la base de datos `cybercore.sql` en HeidiSQL.
 4. Ahora puedes acceder al proyecto a través de la siguiente URL: `http://localhost/cybercore` o `https://cybercore.test/`.
 
+
 # Documentación de la API
 
 ¡Bienvenido al proyecto! Esta documentación te guiará sobre cómo utilizar la API de forma adecuada.
