@@ -7,6 +7,7 @@ include('../app/config/config.php');
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="icon" href="<?php echo $URL; ?>/public/favicon.ico" type="image/x-icon">
     <title>Transportes CYBERCORE</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>

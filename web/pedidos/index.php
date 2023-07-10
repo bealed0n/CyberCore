@@ -23,7 +23,7 @@ if(isset($_SESSION['u_usuario'])) {
     <!DOCTYPE html>
     <html>
     <head>
-        <?php //include('../../layout/head.php');?>
+        <?php include('../../layout/head.php');?>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <!-- Tell the browser to be responsive to screen width -->

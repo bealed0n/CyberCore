@@ -1,13 +1,21 @@
+
+<?php
+/**
+ 
+ */
+include('../app/config/config.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" href="<?php echo $URL; ?>/public/favicon.ico" type="image/x-icon">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta
     name="description"
     content="SwaggerUI"
   />
-  <title>SwaggerUI</title>
+  <title>Documentacion API</title>
   <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@4.5.0/swagger-ui.css" />
   <style>
     body {
@@ -95,15 +103,6 @@
     </div>
   </div>
   <div class="main-content">
-<!-- <div class="swagger-ui-content active" id="content-inicio">
-      <div class="intro-wrapper">
-        <div class="intro">
-          <h1>Bienvenido a la documentación</h1>
-          <p>Aquí encontrarás toda la información necesaria para utilizar nuestra API.</p>
-          <p>¡Explora las diferentes secciones y descubre cómo utilizar nuestros servicios de manera eficiente!</p>
-        </div>
-      </div>
-    </div> -->
     <div class="swagger-ui-content active" id="content-inicio">
       <div id="swagger-ui1">
         <div class="intro-wrapper">
