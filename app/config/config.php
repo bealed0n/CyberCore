@@ -6,7 +6,7 @@ define('USUARIO','root');
 define('PASSWOD','');
 define('BD','cybercore');
 
-$URL = 'http://25.2.54.205/cybercore';
+$URL = 'http://localhost/cybercore';//http://localhost/cybercore    cambiar segun server
 
 
 $servidor = "mysql:dbname=".BD.";host=".SERVIDOR;
