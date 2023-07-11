@@ -1,31 +1,27 @@
 <?php
-/**
-
- */
-
 include ('../../app/config/config.php');
 
 $email = $_POST['email'];
-$pass = $_POST['password'];
+$password = $_POST['password'];
 
-//$email ='benj.loyola@duocuc.cl';
-//$pass = '123';
 $email_tabla = "";
-$password_tabla="";
+$password_tabla = "";
 
-$query = $pdo->prepare("SELECT * FROM tb_usuarios WHERE email ='$email' AND password ='$pass' AND estado ='1' ");
+$query = $pdo->prepare("SELECT * FROM tb_usuarios WHERE email = :email AND estado = '1'");
+$query->bindParam(':email', $email);
 $query->execute();
-$usuarios=$query->fetchAll(PDO::FETCH_ASSOC);
+$usuarios = $query->fetchAll(PDO::FETCH_ASSOC);
 
-foreach ($usuarios as $usuario){
+foreach ($usuarios as $usuario) {
     $email_tabla = $usuario['email'];
     $password_tabla = $usuario['password'];
 }
-if(  (($email)==($email_tabla))  && (($pass)==($password_tabla))  ){
-    echo "success";
+
+if (password_verify($password, $password_tabla) && $email == $email_tabla) {
     session_start();
     $_SESSION['u_usuario'] = $email;
-    header("Location: ".$URL."/sistema_movil/app/pedidos.php");
-}else{
+    header("Location: " . $URL . "/sistema_movil/app/pedidos.php");
+} else {
     echo "error";
 }
+?>
