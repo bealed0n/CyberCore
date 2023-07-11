@@ -10,6 +10,6 @@ session_start();
 if(isset($_SESSION['u_usuario'])) {
     $user = $_SESSION['u_usuario'];
     session_destroy();
-    header("Location: ".$URL."/web");
+    header("Location: ".$URL."/");
 }
 ?>

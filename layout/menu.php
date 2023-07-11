@@ -1,8 +1,12 @@
 <?php
+
 /**
  *
  */
 ?>
+<script src="sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -37,7 +41,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-                <?php if ($cargo_s == "ADMINISTRADOR"): ?>
+                <?php if ($cargo_s == "ADMINISTRADOR") : ?>
                     <li class="nav-item <?php echo ($activePage == 'usuarios') ? 'menu-open' : ''; ?>">
                         <a href="<?php echo $URL; ?>/web/usuarios/" class="nav-link <?php echo ($activePage == 'usuarios') ? 'active' : ''; ?>">
                             <i class="fas fa-users nav-icon"></i>
@@ -58,7 +62,7 @@
                     </li>
                 <?php endif; ?>
 
-                <?php if ($cargo_s == "REPARTIDOR"): ?>
+                <?php if ($cargo_s == "REPARTIDOR") : ?>
                     <li class="nav-item <?php echo ($activePage == 'mis-pedidos') ? 'menu-open' : ''; ?>">
                         <a href="<?php echo $URL; ?>/sistema_movil/login" class="nav-link <?php echo ($activePage == 'mis-pedidos') ? 'active' : ''; ?>">
                             <i class="fas fa-store nav-icon"></i>
@@ -70,7 +74,7 @@
                 <li class="nav-header">Sesión</li>
 
                 <li class="nav-item">
-                    <a href="<?php echo $URL; ?>/login/cerrarsesion.php" class="nav-link">
+                    <a  class="nav-link" onclick="cerrarSesionLink()">
                         <i class="fas fa-lock nav-icon"></i>
                         <p>Cerrar Sesión</p>
                     </a>
@@ -94,6 +98,25 @@
 <script>
     const activePageElement = document.querySelector('.nav-link.active');
     if (activePageElement) {
-        activePageElement.classList.add('white'); 
+        activePageElement.classList.add('white');
+    }
+</script>
+
+<script>
+    function cerrarSesionLink() {
+        // Muestra el cuadro de diálogo de confirmación
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: '¿Deseas cerrar la sesión?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Confirmar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Si se confirma la acción, redirige al enlace de cierre de sesión
+                window.location.href = "<?php echo $URL; ?>/login/cerrarsesion.php";
+            }
+        });
     }
 </script>

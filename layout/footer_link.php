@@ -3,6 +3,7 @@
 ?>
 
 
+
 <!-- jQuery -->
 <script src="<?php echo $URL;?>/app/templeates/AdminLTE-3.0.5/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
