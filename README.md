@@ -16,7 +16,19 @@ git clone https://github.com/bealed0n/CyberCore.git
 3. Ejecuta la el SQL para cargar y se creara la base de datos y sus campos
 4. Ahora puedes acceder al proyecto a través de la siguiente URL: `http://localhost/cybercore` o `https://cybercore.test/`.
 
+## Credenciales de acceso
 
+Para acceder al sistema, puedes utilizar las siguientes credenciales:
+
+**Administrador**
+- Email: admin@gmail.com
+- Contraseña: 123
+
+**Repartidor**
+- Email: repartidor@gmail.com
+- Contraseña: 123
+
+  
 # Documentación de la API
 
 Esta documentación te guiará sobre cómo utilizar la API de forma adecuada.
