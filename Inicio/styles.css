@@ -45,7 +45,7 @@ header {
 }
 
 .nav-links a:hover {
-    color: #2bdf61;
+    color: #ffffff;
 }
 
 .container {
@@ -68,7 +68,10 @@ h1 {
 .transport-image {
     width: 100%;
     height: auto;
-    max-height: 500px;
+    max-height: 736px;
+}
+h1 {
+    font-family: "SF Pro Display", Arial, sans-serif;
 }
 
 footer {
@@ -96,8 +99,10 @@ footer {
     transition: color 0.3s;
 }
 
-.github-link:hover {
-    color: #1e3ab8;
+.btn-outline-secondary {
+    background-color: #191919;
+    color: #ffffff;
+    border: 1px solid #333;
 }
 
 .btn {
@@ -109,17 +114,20 @@ footer {
     transition: background-color 0.3s, color 0.3s;
 }
 
-.btn-primary {
-    background-color: #4CAF50;
-    color: #fff;
-}
-
-.btn-secondary {
-    background-color: #FF9800;
-    color: #fff;
-}
-
 .btn:hover {
     background-color: #0c1014;
-    color: #fff;
+    color: #ffffff;
+}
+img.logo {
+    align-items: center;
+}
+.slogan {
+    font-size: 24px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+}
+
+.quote {
+    font-style: italic;
 }

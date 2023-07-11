@@ -14,9 +14,8 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
-               <div class="container">
-                   asdfs
-               </div>
+            <div class="container">
+            </div>
             </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->

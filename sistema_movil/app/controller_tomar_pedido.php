@@ -14,7 +14,7 @@
  $sentencia->bindParam(':id_pedido', $id_pedido);
  
  if ($sentencia->execute()) {
-     header("Location: http://localhost/cybercore/sistema_movil/app/pedidos.php");
+    header("Location: $URL/sistema_movil/app/pedidos.php");
      exit();
  } else {
      echo "No se pudo tomar el pedido, comuníquese con el encargado del sistema. Gracias";
