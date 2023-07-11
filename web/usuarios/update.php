@@ -1,11 +1,11 @@
-<?php include('../../app/config/config.php');
+<?php
+include('../../app/config/config.php');
 
 $id_usuario = $_GET['id'];
 
 session_start();
-if(isset($_SESSION['u_usuario'])) {
+if (isset($_SESSION['u_usuario'])) {
     $user = $_SESSION['u_usuario'];
-    //echo "session de ".$user; ///////////para comprobar sesion
 
     $query = $pdo->prepare("SELECT * FROM tb_usuarios WHERE email = '$user' AND estado ='1'");
     $query->execute();
@@ -13,7 +13,7 @@ if(isset($_SESSION['u_usuario'])) {
     foreach ($usuarios as $usuario) {
         $id_usuario_s = $usuario['id'];
         $ap_paterno_s = $usuario['ap_paterno'];
-        $ap_materno_s= $usuario['ap_materno'];
+        $ap_materno_s = $usuario['ap_materno'];
         $nombres_s = $usuario['nombres'];
         $rut_s = $usuario['rut'];
         $cargo_s = $usuario['cargo'];
@@ -24,13 +24,13 @@ if(isset($_SESSION['u_usuario'])) {
     <!DOCTYPE html>
     <html>
     <head>
-        <?php include('../../layout/head.php');?>
+        <?php include('../../layout/head.php'); ?>
         <title>Transporte | CyberCore</title>
     </head>
     <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
 
-        <?php include('../../layout/menu.php');?>
+        <?php include('../../layout/menu.php'); ?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Main content -->
@@ -40,25 +40,32 @@ if(isset($_SESSION['u_usuario'])) {
                         <br>
                         <div class="card card-primary card-outline">
                             <div class="card-header">
-                                <h3 class="card-title"><span class="fa fa-users"></span> Actualización de  usuario</h3>
+                                <h3 class="card-title"><span class="fa fa-users"></span> Actualización de usuario</h3>
                             </div> <!-- /.card-body -->
                             <div class="card-body">
-                            <?php
+                                <?php
                                 $query2 = $pdo->prepare("SELECT * FROM tb_usuarios WHERE id = '$id_usuario' AND estado ='1'");
                                 $query2->execute();
                                 $datos = $query2->fetchAll(PDO::FETCH_ASSOC);
                                 foreach ($datos as $dato) {
-                                $id_usuario_d = $dato['id'];
-                                $nombres = $dato['nombres'];
-                                $ap_paterno = $dato['ap_paterno'];
-                                $ap_materno = $dato['ap_materno'];
-                                $fecha_nacimiento = $dato['fecha_nacimiento'];
-                                $celular = $dato['celular'];
-                                $rut = $dato['rut'];
-                                $email = $dato['email'];
-                                $password = $dato['password'];
-                                $sexo = $dato['sexo'];
+                                    $id_usuario_d = $dato['id'];
+                                    $nombres = $dato['nombres'];
+                                    $ap_paterno = $dato['ap_paterno'];
+                                    $ap_materno = $dato['ap_materno'];
+                                    $fecha_nacimiento = $dato['fecha_nacimiento'];
+                                    $celular = $dato['celular'];
+                                    $rut = $dato['rut'];
+                                    $email = $dato['email'];
+                                    $password = $dato['password'];
+                                    $sexo = $dato['sexo'];
                                 }
+                                ?>
+
+                                <?php
+                                // Obtener el hash de la contraseña actual almacenada en la base de datos
+                                $query3 = $pdo->prepare("SELECT password FROM tb_usuarios WHERE id = '$id_usuario'");
+                                $query3->execute();
+                                $hashPassword = $query3->fetchColumn();
                                 ?>
 
                                 <form action="controller_update.php" method="post">
@@ -66,7 +73,7 @@ if(isset($_SESSION['u_usuario'])) {
                                         <div class="col-6">
                                             <div class="form-group">
                                                 <label for="">Nombres</label>
-                                                <input type="text" class="form-control" name="nombres" value="<?php echo $nombres;?>">
+                                                <input type="text" class="form-control" name="nombres" value="<?php echo $nombres; ?>">
                                             </div>
                                             <div class="form-group">
                                                 <label for="">Apellido Materno</label>
@@ -74,14 +81,14 @@ if(isset($_SESSION['u_usuario'])) {
                                             </div>
                                             <div class="form-group">
                                                 <label for="">Fecha de Nacimiento</label>
-                                                <input type="date" class="form-control" name="fecha_nacimiento" value="<?php echo $fecha_nacimiento;?>">
+                                                <input type="date" class="form-control" name="fecha_nacimiento" value="<?php echo $fecha_nacimiento; ?>">
                                             </div>
                                             <div class="form-group">
                                                 <label for="">Celular</label>
-                                                <input type="text" class="form-control" name="celular" value="<?php echo $celular;?>">
+                                                <input type="text" class="form-control" name="celular" value="<?php echo $celular; ?>">
                                             </div>
                                             <div class="form-group">
-                                                <label for="">Correo Electronico</label>
+                                                <label for="">Correo Electrónico</label>
                                                 <input type="email" class="form-control" value="<?php echo $email; ?>" disabled>
                                                 <input type="email" name="email" value="<?php echo $email; ?>" hidden>
                                             </div>
@@ -89,37 +96,36 @@ if(isset($_SESSION['u_usuario'])) {
                                         <div class="col-6">
                                             <div class="form-group">
                                                 <label for="">Apellido Paterno</label>
-                                                <input type="text" class="form-control" name="ap_paterno" value="<?php echo $ap_paterno;?>">
+                                                <input type="text" class="form-control" name="ap_paterno" value="<?php echo $ap_paterno; ?>">
                                             </div>
                                             <div class="form-group">
                                                 <label for="">Rut</label>
-                                                <input type="text" class="form-control" name="rut" value="<?php echo $rut;?>">
+                                                <input type="text" class="form-control" name="rut" value="<?php echo $rut; ?>">
                                             </div>
                                             <div class="form-group">
                                                 <label for="">Sexo</label>
-                                                <?php
-                                                if($sexo == "MASCULINO"){?>
-                                                    <select name="sexo" id="" CLASS="form-control">
-                                                        <option value="<?php echo $sexo;?>"><?php echo $sexo;?></option>
+                                                <?php if ($sexo == "MASCULINO") { ?>
+                                                    <select name="sexo" id="" class="form-control">
+                                                        <option value="<?php echo $sexo; ?>"><?php echo $sexo; ?></option>
                                                         <option value="FEMENINO">FEMENINO</option>
                                                     </select>
                                                 <?php } ?>
-                                                <?php
-                                                if($sexo == "FEMENINO"){?>
-                                                    <select name="sexo" id="" CLASS="form-control">
-                                                        <option value="<?php echo $sexo;?>"><?php echo $sexo;?></option>
+                                                <?php if ($sexo == "FEMENINO") { ?>
+                                                    <select name="sexo" id="" class="form-control">
+                                                        <option value="<?php echo $sexo; ?>"><?php echo $sexo; ?></option>
                                                         <option value="MASCULINO">MASCULINO</option>
                                                     </select>
                                                 <?php } ?>
                                             </div>
                                             <div class="form-group">
                                                 <label for="">Password</label>
-                                                <input type="text" class="form-control" name="password" value="<?php echo $password;?>">
+                                                <input type="password" class="form-control" name="password" value="">
+                                                <input type="hidden" name="existing_password" value="<?php echo $hashPassword; ?>">
                                             </div>
                                         </div>
                                     </div>
                                     <br>
-                                    <a href="<?php echo $URL;?>/web/usuarios" class="btn btn-default btn-lg">Cancelar</a>
+                                    <a href="<?php echo $URL; ?>/web/usuarios" class="btn btn-default btn-lg">Cancelar</a>
                                     <input type="submit" class="btn btn-success btn-lg" value="Actualizar Usuario">
                                 </form>
                             </div><!-- /.card-body -->
@@ -130,13 +136,13 @@ if(isset($_SESSION['u_usuario'])) {
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-        <?php include('../../layout/footer.php');?>
+        <?php include('../../layout/footer.php'); ?>
     </div>
-    <?php include('../../layout/footer_link.php');?>
+    <?php include('../../layout/footer_link.php'); ?>
     </body>
     </html>
-    <?php
-}else{
+<?php
+} else {
     header("Location: $URL/login");
 }
 ?>

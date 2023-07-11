@@ -5,7 +5,7 @@ $id_usuario = $_GET['id'];
 session_start();
 if(isset($_SESSION['u_usuario'])) {
     $user = $_SESSION['u_usuario'];
-    //echo "session de ".$user; ///////////para comprobar sesion
+    echo "session de ".$user; ///////////para comprobar sesion
 
     $query = $pdo->prepare("SELECT * FROM tb_usuarios WHERE email = '$user' AND estado ='1'");
     $query->execute();
@@ -60,6 +60,12 @@ if(isset($_SESSION['u_usuario'])) {
                                     $password = $dato['password'];
                                     $sexo = $dato['sexo'];
                                 }
+                                ?>
+                                <?php
+                                // Obtener el hash de la contraseña actual almacenada en la base de datos
+                                $query3 = $pdo->prepare("SELECT password FROM tb_usuarios WHERE id = '$id_usuario'");
+                                $query3->execute();
+                                $hashPassword = $query3->fetchColumn();
                                 ?>
 
                                     <div class="row">
@@ -120,7 +126,8 @@ if(isset($_SESSION['u_usuario'])) {
                                             </div>
                                             <div class="form-group">
                                                 <label for="">Password</label>
-                                                <input type="text" class="form-control" name="password" value="<?php echo $password;?>" disabled>
+                                                <input disabled type="password" class="form-control" name="password" value="">
+                                                <input type="hidden" name="existing_password" value="<?php echo $hashPassword; ?>">
                                             </div>
                                         </div>
                                     </div>
