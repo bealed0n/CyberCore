@@ -145,17 +145,16 @@ include('../app/config/config.php');
     });
 
     SwaggerUIBundle({
-      url: 'http://25.2.54.205/cybercore/api/codigo-seguimiento.yaml',
+      url: '<?php echo $URL; ?>/api/codigo-seguimiento.yaml',
       dom_id: '#swagger-ui2',
     });
-
     SwaggerUIBundle({
-      url: 'http://25.2.54.205/cybercore/api/pedidos-sucursal.yaml',
+      url: '<?php echo $URL; ?>/api/pedidos-sucursal.yaml',
       dom_id: '#swagger-ui3',
     });
 
     SwaggerUIBundle({
-      url: 'http://25.2.54.205/cybercore/api/pedidos-bodega.yaml',
+      url: '<?php echo $URL; ?>/api/pedidos-bodega.yaml',
       dom_id: '#swagger-ui4',
     });
   };
